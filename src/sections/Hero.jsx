@@ -106,44 +106,52 @@ bg-transparent
       ================================================== */}
 
       <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="
-          relative
-          z-10
-          mx-auto
-          grid
-          min-h-[calc(100vh-80px)]
-          w-full
-          max-w-[1550px]
-          grid-cols-1
-          items-center
-          gap-10
-          px-5
-          sm:px-7
-          md:px-10
-          lg:grid-cols-[minmax(0,1fr)_390px]
-          lg:gap-14
-          lg:px-8
-          xl:grid-cols-[minmax(0,1fr)_430px]
-          xl:gap-16
-          xl:px-10
-        "
-      >
+  variants={container}
+  initial="hidden"
+  animate="show"
+  className="
+    relative
+    z-10
+    mx-auto
+    grid
+    min-h-[calc(100svh-72px)]
+    w-full
+    max-w-[1550px]
+    grid-cols-1
+    items-center
+    gap-10
+    px-5
+    pt-8
+    pb-10
+    sm:gap-12
+    sm:px-7
+    sm:pt-10
+    sm:pb-12
+    md:min-h-[calc(100vh-80px)]
+    md:px-10
+    md:pt-0
+    md:pb-0
+    lg:grid-cols-[minmax(0,1fr)_390px]
+    lg:gap-14
+    lg:px-8
+    xl:grid-cols-[minmax(0,1fr)_430px]
+    xl:gap-16
+    xl:px-10
+  "
+>
         {/* =================================================
             LEFT CONTENT
         ================================================== */}
 
-        <div
-          className="
-            order-2
-            min-w-0
-            w-full
-            max-w-[1040px]
-            md:order-1
-          "
-        >
+              <div
+  className="
+    order-1
+    min-w-0
+    w-full
+    max-w-[1040px]
+    md:order-1
+  "
+>
           {/* Eyebrow */}
 
           <motion.p
@@ -166,142 +174,158 @@ bg-transparent
           ================================================== */}
 
           <motion.h1
-            variants={fromLeft}
-            className="
-              whitespace-nowrap
-              font-display
-              text-[3.9rem]
-              font-bold
-              leading-[0.92]
-              tracking-[-0.06em]
-              text-text-primary
-              sm:text-[4.8rem]
-              md:text-[5.8rem]
-              lg:text-[6.6rem]
-              xl:text-[7.4rem]
-              2xl:text-[8rem]
-            "
-          >
-            JEEVIKESH S N
-          </motion.h1>
+  variants={fromLeft}
+  className="
+    font-display
+    text-[3.15rem]
+    font-bold
+    leading-[0.92]
+    tracking-[-0.055em]
+    text-text-primary
+    sm:text-[4.4rem]
+    md:text-[5.8rem]
+    lg:text-[6.6rem]
+    xl:text-[7.4rem]
+    2xl:text-[8rem]
+  "
+>
+  JEEVIKESH S N
+</motion.h1>
 
           {/* =================================================
               ROLE
           ================================================== */}
 
           <motion.p
-            variants={fromLeft}
-            className="
-              mt-5
-              font-display
-              text-2xl
-              font-medium
-              text-blue-glow
-              sm:text-3xl
-              md:text-4xl
-              lg:text-[2.65rem]
-            "
-          >
-            {profile.role}
-          </motion.p>
+  variants={fromLeft}
+  className="
+    mt-4
+    font-display
+    text-xl
+    font-medium
+    leading-tight
+    text-blue-glow
+    sm:mt-5
+    sm:text-3xl
+    md:text-4xl
+    lg:text-[2.65rem]
+  "
+>
+  {profile.role}
+</motion.p>
 
           {/* =================================================
               TECHNOLOGY TYPING
           ================================================== */}
 
           <motion.div
-            variants={fadeUp}
-            className="mt-5 min-h-10"
-          >
-            <TypingTechnologies
-              technologies={heroTechnologies}
-            />
-          </motion.div>
+  variants={fadeUp}
+  className="
+    mt-4
+    min-h-8
+    sm:mt-5
+    sm:min-h-10
+  "
+>
+  <TypingTechnologies
+    technologies={heroTechnologies}
+  />
+</motion.div>
 
           {/* =================================================
               DESCRIPTION
           ================================================== */}
 
           <motion.p
-            variants={fadeUp}
-            className="
-              mt-7
-              max-w-3xl
-              text-lg
-              font-medium
-              leading-[1.65]
-              tracking-[-0.01em]
-              text-slate-300
-              sm:text-xl
-              md:text-[1.35rem]
-              md:leading-[1.7]
-            "
-          >
-            Full-Stack Software Developer building secure backend systems with
-            Java & Spring Boot — and cross-platform applications with Flutter.
-          </motion.p>
+  variants={fadeUp}
+  className="
+    mt-6
+    max-w-3xl
+    text-base
+    font-medium
+    leading-7
+    tracking-[-0.005em]
+    text-slate-300
+    sm:mt-7
+    sm:text-xl
+    sm:leading-[1.65]
+    md:text-[1.35rem]
+    md:leading-[1.7]
+  "
+>
+  Full-Stack Software Developer building secure backend systems with
+  Java & Spring Boot — and cross-platform applications with Flutter.
+</motion.p>
 
           {/* =================================================
               CTA
           ================================================== */}
 
           <motion.div
-            variants={fadeUp}
-            className="
-              mt-9
-              flex
-              flex-wrap
-              items-center
-              gap-4
-            "
-          >
+  variants={fadeUp}
+  className="
+    mt-8
+    grid
+    grid-cols-1
+    gap-3
+    sm:flex
+    sm:flex-wrap
+    sm:items-center
+    sm:gap-4
+    md:mt-9
+  "
+>
             {/* Explore My Work */}
 
             <a
-              href="#projects"
-              onClick={(event) => {
-                event.preventDefault();
+  href="#projects"
+  onClick={(event) => {
+    event.preventDefault();
 
-                document
-                  .querySelector("#projects")
-                  ?.scrollIntoView({
-                    behavior: "smooth",
-                  });
-              }}
-              className="
-                group
-                inline-flex
-                items-center
-                gap-2.5
-                rounded-xl
-                bg-blue-600
-                px-6
-                py-3.5
-                font-display
-                text-sm
-                font-semibold
-                text-white
-                shadow-[0_10px_32px_-10px_rgba(37,99,235,0.7)]
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:bg-blue-500
-                hover:shadow-[0_16px_40px_-10px_rgba(59,130,246,0.85)]
-                sm:px-7
-                sm:text-base
-              "
-            >
-              Explore My Work
+    document
+      .querySelector("#projects")
+      ?.scrollIntoView({
+        behavior: "smooth",
+      });
+  }}
+  className="
+    group
+    inline-flex
+    w-full
+    items-center
+    justify-center
+    gap-2.5
+    rounded-xl
+    bg-blue-600
+    px-5
+    py-3
+    font-display
+    text-sm
+    font-semibold
+    text-white
+    shadow-[0_10px_32px_-10px_rgba(37,99,235,0.7)]
+    transition-all
+    duration-300
+    hover:-translate-y-1
+    hover:bg-blue-500
+    hover:shadow-[0_16px_40px_-10px_rgba(59,130,246,0.85)]
+    sm:w-auto
+    sm:px-7
+    sm:py-3.5
+    sm:text-base
+  "
+>
+  Explore My Work
 
-              <ArrowRight
-                size={18}
-                className="
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                "
-              />
-            </a>
+  <ArrowRight
+    size={18}
+    className="
+      transition-transform
+      duration-300
+      group-hover:translate-x-1
+    "
+  />
+</a>
 
             {/* Let's Build Together */}
 
@@ -310,25 +334,25 @@ bg-transparent
   onClick={(event) => {
     event.preventDefault();
 
-    const contactSection = document.getElementById("contact");
-
-    if (contactSection) {
-      contactSection.scrollIntoView({
+    document
+      .getElementById("contact")
+      ?.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
-    }
   }}
   className="
     inline-flex
+    w-full
     items-center
+    justify-center
     gap-2
     rounded-xl
     border
     border-border-strong
     bg-white/[0.02]
-    px-6
-    py-3.5
+    px-5
+    py-3
     font-display
     text-sm
     font-semibold
@@ -339,7 +363,9 @@ bg-transparent
     hover:border-blue-500/60
     hover:bg-blue-500/5
     hover:text-blue-300
+    sm:w-auto
     sm:px-7
+    sm:py-3.5
     sm:text-base
   "
 >
@@ -351,16 +377,19 @@ bg-transparent
           ================================================== */}
 
           <motion.div
-            variants={fadeUp}
-            className="
-              mt-7
-              flex
-              flex-wrap
-              items-center
-              gap-x-7
-              gap-y-4
-            "
-          >
+  variants={fadeUp}
+  className="
+    mt-6
+    flex
+    flex-wrap
+    items-center
+    gap-x-5
+    gap-y-3
+    sm:mt-7
+    sm:gap-x-7
+    sm:gap-y-4
+  "
+>
             {/* LinkedIn */}
 
             <SocialLink
@@ -440,36 +469,36 @@ bg-transparent
     hover:text-blue-300
   "
 >
-              <span
-                className="
-                  flex
-                  h-9
-                  w-9
-                  items-center
-                  justify-center
-                  rounded-lg
-                  border
-                  border-border-subtle
-                  bg-white/[0.02]
-                  transition-all
-                  duration-300
-                  group-hover:border-blue-500/60
-                  group-hover:bg-blue-500/5
-                  group-hover:shadow-[0_8px_20px_-10px_rgba(59,130,246,0.8)]
-                "
-              >
-                <FileDown
-                  size={18}
-                  className="
-                    transition-transform
-                    duration-300
-                    group-hover:translate-y-0.5
-                  "
-                />
-              </span>
+  <span
+    className="
+      flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-lg
+      border
+      border-border-subtle
+      bg-white/[0.02]
+      transition-all
+      duration-300
+      group-hover:border-blue-500/60
+      group-hover:bg-blue-500/5
+      group-hover:shadow-[0_8px_20px_-10px_rgba(59,130,246,0.8)]
+    "
+  >
+    <FileDown
+      size={18}
+      className="
+        transition-transform
+        duration-300
+        group-hover:translate-y-0.5
+      "
+    />
+  </span>
 
-              <span>Resume</span>
-            </a>
+  <span>Resume</span>
+</a>
           </motion.div>
         </div>
 
@@ -478,33 +507,32 @@ bg-transparent
         ================================================== */}
 
         <motion.div
-          variants={fromRight}
-          className="
-            order-1
-            flex
-            w-full
-            items-center
-            justify-end
-            md:order-2
-            lg:justify-self-end
-          "
-        >
-          <div
-            className="
-              w-full
-              max-w-[330px]
-              sm:max-w-[360px]
-              md:max-w-[390px]
-              lg:max-w-[390px]
-              xl:max-w-[420px]
-            "
-          >
-            <ProfilePhoto
-              src={profile.photo}
-              name={profile.name}
-            />
-          </div>
-        </motion.div>
+  variants={fromRight}
+  className="
+    order-2
+    flex
+    w-full
+    items-center
+    justify-center
+    md:order-2
+    lg:justify-self-end
+  "
+>
+  <div
+    className="
+      w-full
+      max-w-[280px]
+      sm:max-w-[320px]
+      md:max-w-[390px]
+      lg:max-w-[390px]
+      xl:max-w-[420px]
+    "
+  >
+    <ProfilePhoto
+      name={profile.name}
+    />
+  </div>
+</motion.div>
       </motion.div>
 
       {/* =================================================

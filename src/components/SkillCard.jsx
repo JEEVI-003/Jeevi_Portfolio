@@ -63,43 +63,52 @@ export default function SkillCard({
         border
         border-border-subtle
         bg-surface/[0.78]
-        p-5
+        p-4
         backdrop-blur-md
         transition-all
         duration-300
         hover:border-blue-500/60
         hover:bg-surface/[0.88]
         hover:shadow-[0_20px_55px_-28px_rgba(37,99,235,0.7)]
-        sm:p-6
+        sm:p-5
+        md:p-6
       "
     >
-      {/* Top-right ambient glow */}
+      {/* =================================================
+          TOP-RIGHT AMBIENT GLOW
+      ================================================== */}
+
       <div
         className="
           pointer-events-none
           absolute
           -right-12
           -top-12
-          h-36
-          w-36
+          h-32
+          w-32
           rounded-full
           bg-blue-600/0
           blur-3xl
           transition-all
           duration-500
           group-hover:bg-blue-600/[0.18]
+          sm:h-36
+          sm:w-36
         "
       />
 
-      {/* Bottom ambient glow */}
+      {/* =================================================
+          BOTTOM AMBIENT GLOW
+      ================================================== */}
+
       <div
         className="
           pointer-events-none
           absolute
           -bottom-16
           left-1/2
-          h-28
-          w-44
+          h-24
+          w-40
           -translate-x-1/2
           rounded-full
           bg-cyan-500/0
@@ -107,10 +116,15 @@ export default function SkillCard({
           transition-all
           duration-500
           group-hover:bg-cyan-500/[0.05]
+          sm:h-28
+          sm:w-44
         "
       />
 
-      {/* Category */}
+      {/* =================================================
+          CATEGORY
+      ================================================== */}
+
       <div className="relative flex items-center gap-3">
         <motion.span
           whileHover={{
@@ -119,8 +133,8 @@ export default function SkillCard({
           }}
           className="
             flex
-            h-11
-            w-11
+            h-10
+            w-10
             shrink-0
             items-center
             justify-center
@@ -134,48 +148,61 @@ export default function SkillCard({
             group-hover:border-blue-500/50
             group-hover:bg-blue-500/[0.06]
             group-hover:shadow-[0_8px_22px_-12px_rgba(59,130,246,0.8)]
+            sm:h-11
+            sm:w-11
           "
         >
           <Icon
-            size={19}
+            size={18}
             strokeWidth={1.75}
+            className="sm:h-[19px] sm:w-[19px]"
           />
         </motion.span>
 
         <h3
           className="
             font-display
-            text-lg
+            text-base
             font-semibold
             text-text-primary
+            sm:text-lg
           "
         >
           {category}
         </h3>
       </div>
 
-      {/* Divider */}
+      {/* =================================================
+          DIVIDER
+      ================================================== */}
+
       <div
         className="
-          mt-5
+          mt-4
           h-px
           w-full
           bg-gradient-to-r
           from-blue-500/25
           via-border-subtle
           to-transparent
+          sm:mt-5
         "
       />
 
-      {/* Skill pills */}
+      {/* =================================================
+          SKILL PILLS
+      ================================================== */}
+
       {safeItems.length > 0 ? (
         <ul
           className="
             relative
-            mt-5
+            mt-4
             flex
             flex-wrap
-            gap-2
+            gap-1.5
+            sm:mt-5
+            sm:gap-2
           "
         >
           {safeItems.map((item, index) => (
@@ -206,10 +233,10 @@ export default function SkillCard({
                 border
                 border-border-subtle
                 bg-bg-alt/[0.72]
-                px-3
+                px-2.5
                 py-1.5
                 font-mono
-                text-xs
+                text-[11px]
                 text-text-secondary
                 backdrop-blur-sm
                 transition-all
@@ -217,6 +244,8 @@ export default function SkillCard({
                 hover:border-blue-500/50
                 hover:bg-blue-500/[0.06]
                 hover:text-text-primary
+                sm:px-3
+                sm:text-xs
               "
             >
               {item}
@@ -224,7 +253,14 @@ export default function SkillCard({
           ))}
         </ul>
       ) : (
-        <p className="mt-5 text-sm text-text-muted">
+        <p
+          className="
+            mt-4
+            text-sm
+            text-text-muted
+            sm:mt-5
+          "
+        >
           No skills listed in this category.
         </p>
       )}

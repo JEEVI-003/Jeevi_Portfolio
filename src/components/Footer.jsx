@@ -1,10 +1,23 @@
-import { ArrowUp, Mail, Phone } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./BrandIcons";
-import { contact, profile } from "../data/portfolio";
+import {
+  ArrowUp,
+  Mail,
+  Phone,
+} from "lucide-react";
+
+import {
+  GithubIcon,
+  LinkedinIcon,
+} from "./BrandIcons";
+
+import {
+  contact,
+  profile,
+} from "../data/portfolio";
 
 const instagramUrl =
   "https://www.instagram.com/mr_jeevi_003?igsh=OWoxdjg5ejV0Mjlj";
-  export default function Footer() {
+
+export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -26,9 +39,9 @@ const instagramUrl =
         bg-transparent
       "
     >
-      {/* =========================================
+      {/* =================================================
           AMBIENT FOOTER GLOW
-      ========================================== */}
+      ================================================== */}
 
       <div
         className="
@@ -42,11 +55,13 @@ const instagramUrl =
             absolute
             left-[10%]
             top-0
-            h-32
-            w-64
+            h-24
+            w-48
             rounded-full
             bg-blue-500/[0.035]
             blur-3xl
+            sm:h-32
+            sm:w-64
           "
         />
 
@@ -55,174 +70,186 @@ const instagramUrl =
             absolute
             bottom-0
             right-[15%]
-            h-36
-            w-72
+            h-28
+            w-56
             rounded-full
             bg-cyan-500/[0.025]
             blur-3xl
+            sm:h-36
+            sm:w-72
           "
         />
       </div>
 
-      {/* =========================================
+      {/* =================================================
           FOOTER MAIN CONTAINER
-      ========================================== */}
+      ================================================== */}
 
       <div
         className="
           relative
           z-10
           mx-auto
-          grid
           w-full
           max-w-7xl
-          grid-cols-1
-          items-center
-          gap-6
-          px-6
-          py-7
-          sm:px-8
-          md:grid-cols-[1fr_auto_1fr]
-          md:gap-8
+          px-5
+          py-6
+          sm:px-6
+          sm:py-7
           md:px-10
           md:py-8
           xl:px-12
         "
       >
-        {/* =========================================
-            LEFT — NAME
-        ========================================== */}
-
-        <div
-          className="
-            w-full
-            shrink-0
-            text-left
-            md:w-auto
-            md:justify-self-start
-          "
-        >
-          <p
-            className="
-              font-display
-              text-base
-              font-semibold
-              tracking-tight
-              text-text-primary
-              sm:text-lg
-              md:text-xl
-            "
-          >
-            {profile.name}
-            <span className="text-blue-400">.</span>
-          </p>
-
-          <p
-            className="
-              mt-1
-              font-mono
-              text-[9px]
-              uppercase
-              tracking-[0.2em]
-              text-text-muted
-              sm:text-[10px]
-            "
-          >
-            {profile.role}
-          </p>
-        </div>
-                {/* =========================================
-            CENTER — SOCIAL / CONTACT BUTTONS
-        ========================================== */}
+        {/* =================================================
+            TOP ROW
+        ================================================== */}
 
         <div
           className="
             flex
-            w-full
-            flex-wrap
-            items-center
-            justify-start
-            gap-2
-            md:w-auto
-            md:justify-center
+            items-start
+            justify-between
+            gap-4
           "
         >
-          {/* LinkedIn */}
+          {/* =================================================
+              LEFT — NAME
+          ================================================== */}
 
-          <ExpandableLink
-            href={contact.linkedin}
-            label="LinkedIn"
-            icon={<LinkedinIcon size={17} />}
-            accent="blue"
-            external
-          />
+          <div className="min-w-0">
+            <p
+              className="
+                font-display
+                text-base
+                font-semibold
+                tracking-tight
+                text-text-primary
+                sm:text-lg
+                md:text-xl
+              "
+            >
+              {profile.name}
+              <span className="text-blue-400">
+                .
+              </span>
+            </p>
 
-          {/* GitHub */}
+            <p
+              className="
+                mt-1
+                font-mono
+                text-[9px]
+                uppercase
+                tracking-[0.16em]
+                text-text-muted
+                sm:text-[10px]
+                sm:tracking-[0.2em]
+              "
+            >
+              {profile.role}
+            </p>
+          </div>
 
-          <ExpandableLink
-            href={contact.github}
-            label="GitHub"
-            icon={<GithubIcon size={17} />}
-            accent="violet"
-            external
-          />
+          {/* =================================================
+              RIGHT — SOCIAL ICONS
+          ================================================== */}
 
-          {/* Instagram */}
+          <div
+            className="
+              flex
+              shrink-0
+              flex-wrap
+              items-center
+              justify-end
+              gap-2
+            "
+          >
+            {/* LinkedIn */}
 
-          <ExpandableLink
-            href={instagramUrl}
-            label="Instagram"
-            icon={<InstagramIcon />}
-            accent="pink"
-            external
-          />
+            <ExpandableLink
+              href={contact.linkedin}
+              label="LinkedIn"
+              icon={
+                <LinkedinIcon size={17} />
+              }
+              accent="blue"
+              external
+            />
 
-          {/* Email */}
+            {/* GitHub */}
 
-          <ExpandableLink
-            href={`mailto:${contact.email}`}
-            label="Email"
-            icon={<Mail size={17} />}
-            accent="cyan"
-          />
+            <ExpandableLink
+              href={contact.github}
+              label="GitHub"
+              icon={
+                <GithubIcon size={17} />
+              }
+              accent="violet"
+              external
+            />
 
-          {/* Call */}
+            {/* Instagram */}
 
-          <ExpandableLink
-            href={phoneHref}
-            label="Call"
-            icon={<Phone size={17} />}
-            accent="emerald"
-          />
+            <ExpandableLink
+              href={instagramUrl}
+              label="Instagram"
+              icon={<InstagramIcon />}
+              accent="pink"
+              external
+            />
+
+            {/* Email */}
+
+            <ExpandableLink
+              href={`mailto:${contact.email}`}
+              label="Email"
+              icon={<Mail size={17} />}
+              accent="cyan"
+            />
+
+            {/* Call */}
+
+            <ExpandableLink
+              href={phoneHref}
+              label="Call"
+              icon={<Phone size={17} />}
+              accent="emerald"
+            />
+          </div>
         </div>
-
-        {/* =========================================
-            RIGHT — COPYRIGHT + GO TO TOP
-        ========================================== */}
+                {/* =================================================
+            BOTTOM ROW
+        ================================================== */}
 
         <div
           className="
+            mt-6
             flex
-            w-full
-            flex-wrap
             items-center
-            justify-start
-            gap-3
-            md:w-auto
-            md:justify-self-end
-            md:gap-4
+            justify-between
+            gap-4
+            sm:mt-7
           "
         >
+          {/* =================================================
+              COPYRIGHT — LEFT
+          ================================================== */}
+
           <p
             className="
-              whitespace-nowrap
               text-[10px]
               text-text-muted
               sm:text-xs
             "
           >
-            © {new Date().getFullYear()} {profile.name}
+            © {new Date().getFullYear()}{" "}
+            {profile.name}
           </p>
+
+          {/* =================================================
+              GO TO TOP — RIGHT
+          ================================================== */}
 
           <button
             type="button"
@@ -234,6 +261,7 @@ const instagramUrl =
               inline-flex
               shrink-0
               items-center
+              justify-center
               gap-2
               rounded-full
               border
@@ -255,6 +283,7 @@ const instagramUrl =
               hover:from-blue-500
               hover:to-cyan-400
               hover:shadow-[0_14px_36px_-10px_rgba(34,211,238,0.7)]
+              active:scale-95
               sm:px-5
             "
           >
@@ -288,54 +317,78 @@ function ExpandableLink({
 }) {
   const accentStyles = {
     blue: {
-      border: "hover:border-blue-400/50",
-      bg: "hover:bg-blue-500/[0.07]",
-      text: "group-hover:text-blue-300",
+      border:
+        "hover:border-blue-400/50",
+      bg:
+        "hover:bg-blue-500/[0.07]",
+      text:
+        "group-hover:text-blue-300",
       glow:
         "hover:shadow-[0_12px_30px_-15px_rgba(59,130,246,0.8)]",
     },
 
     violet: {
-      border: "hover:border-violet-400/50",
-      bg: "hover:bg-violet-500/[0.07]",
-      text: "group-hover:text-violet-300",
+      border:
+        "hover:border-violet-400/50",
+      bg:
+        "hover:bg-violet-500/[0.07]",
+      text:
+        "group-hover:text-violet-300",
       glow:
         "hover:shadow-[0_12px_30px_-15px_rgba(167,139,250,0.8)]",
     },
 
     pink: {
-      border: "hover:border-pink-400/50",
-      bg: "hover:bg-pink-500/[0.07]",
-      text: "group-hover:text-pink-300",
+      border:
+        "hover:border-pink-400/50",
+      bg:
+        "hover:bg-pink-500/[0.07]",
+      text:
+        "group-hover:text-pink-300",
       glow:
         "hover:shadow-[0_12px_30px_-15px_rgba(236,72,153,0.75)]",
     },
 
     cyan: {
-      border: "hover:border-cyan-400/50",
-      bg: "hover:bg-cyan-500/[0.07]",
-      text: "group-hover:text-cyan-300",
+      border:
+        "hover:border-cyan-400/50",
+      bg:
+        "hover:bg-cyan-500/[0.07]",
+      text:
+        "group-hover:text-cyan-300",
       glow:
         "hover:shadow-[0_12px_30px_-15px_rgba(34,211,238,0.8)]",
     },
 
     emerald: {
-      border: "hover:border-emerald-400/50",
-      bg: "hover:bg-emerald-500/[0.07]",
-      text: "group-hover:text-emerald-300",
+      border:
+        "hover:border-emerald-400/50",
+      bg:
+        "hover:bg-emerald-500/[0.07]",
+      text:
+        "group-hover:text-emerald-300",
       glow:
         "hover:shadow-[0_12px_30px_-15px_rgba(52,211,153,0.75)]",
     },
   };
 
   const style =
-    accentStyles[accent] ?? accentStyles.blue;
+    accentStyles[accent] ??
+    accentStyles.blue;
 
   return (
     <a
       href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer" : undefined}
+      target={
+        external
+          ? "_blank"
+          : undefined
+      }
+      rel={
+        external
+          ? "noreferrer"
+          : undefined
+      }
       aria-label={label}
       title={label}
       className={`
@@ -354,14 +407,17 @@ function ExpandableLink({
         backdrop-blur-md
         transition-all
         duration-300
-        hover:w-[112px]
+
+        md:hover:w-[122px]
+
         ${style.border}
         ${style.bg}
         ${style.glow}
-        sm:hover:w-[122px]
       `}
     >
-      {/* Icon */}
+      {/* =================================================
+          ICON
+      ================================================== */}
 
       <span
         className="
@@ -376,10 +432,13 @@ function ExpandableLink({
         {icon}
       </span>
 
-      {/* Text */}
+      {/* =================================================
+          DESKTOP HOVER LABEL
+      ================================================== */}
 
       <span
         className={`
+          hidden
           whitespace-nowrap
           pr-3
           font-mono
@@ -388,7 +447,8 @@ function ExpandableLink({
           opacity-0
           transition-all
           duration-200
-          group-hover:opacity-100
+          md:block
+          md:group-hover:opacity-100
           ${style.text}
         `}
       >
@@ -397,7 +457,6 @@ function ExpandableLink({
     </a>
   );
 }
-
 /* =========================================================
    INSTAGRAM ICON
 ========================================================= */

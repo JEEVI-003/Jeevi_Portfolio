@@ -291,16 +291,18 @@ export default function Skills() {
     <section
       id="skills"
       className="
-        relative
-        w-full
-        scroll-mt-24
-        overflow-hidden
-        bg-transparent
-        pt-24
-        pb-8
-        md:pt-32
-        md:pb-10
-      "
+  relative
+  w-full
+  scroll-mt-24
+  overflow-hidden
+  bg-transparent
+  pt-16
+  pb-6
+  sm:pt-20
+  sm:pb-8
+  md:pt-32
+  md:pb-10
+"
     >
       {/* =================================================
           AMBIENT BACKGROUND
@@ -368,13 +370,16 @@ export default function Skills() {
         <motion.p
           variants={reveal}
           className="
-            mt-6
-            max-w-3xl
-            text-base
-            leading-7
-            text-text-secondary
-            sm:text-lg
-          "
+  mt-4
+  max-w-3xl
+  text-sm
+  leading-6
+  text-text-secondary
+  sm:mt-6
+  sm:text-base
+  sm:leading-7
+  lg:text-lg
+"
         >
           A practical technology stack focused on backend engineering,
           application development, mobile platforms, databases, and
@@ -389,13 +394,16 @@ export default function Skills() {
           <motion.div
             variants={container}
             className="
-              mt-12
-              grid
-              grid-cols-1
-              gap-5
-              sm:grid-cols-2
-              lg:grid-cols-3
-            "
+  mt-8
+  grid
+  grid-cols-1
+  gap-4
+  sm:mt-10
+  sm:grid-cols-2
+  sm:gap-5
+  lg:mt-12
+  lg:grid-cols-3
+"
           >
             {groups.map((group) => (
               <SkillCard
@@ -432,11 +440,14 @@ export default function Skills() {
         ================================================== */}
 
         <motion.div
-          variants={reveal}
-          className="mt-8"
-        >
-          <div className="mb-7">
-            <div className="flex items-center gap-3">
+  variants={reveal}
+  className="
+    mt-10
+    sm:mt-12
+    lg:mt-16
+  "
+>
+<div className="mb-5 sm:mb-7">            <div className="flex items-center gap-3">
               <span
                 className="
                   h-px
@@ -464,29 +475,32 @@ export default function Skills() {
 
             <h3
               className="
-                mt-3
-                font-display
-                text-3xl
-                font-semibold
-                tracking-[-0.035em]
-                text-text-primary
-                sm:text-4xl
-                md:text-[2.7rem]
-              "
+  mt-3
+  font-display
+  text-2xl
+  font-semibold
+  tracking-[-0.035em]
+  text-text-primary
+  sm:text-3xl
+  md:text-4xl
+  lg:text-[2.7rem]
+"
             >
               The Stack Behind My Builds
             </h3>
 
             <p
               className="
-                mt-3
-                max-w-3xl
-                text-base
-                leading-7
-                text-text-secondary
-                sm:text-lg
-                sm:leading-8
-              "
+  mt-3
+  max-w-3xl
+  text-sm
+  leading-6
+  text-text-secondary
+  sm:text-base
+  sm:leading-7
+  lg:text-lg
+  lg:leading-8
+"
             >
               Java, Spring Boot, Flutter, REST APIs, databases, and modern
               web technologies — the core tools I use to turn ideas into
@@ -501,14 +515,15 @@ export default function Skills() {
 
       <div
         className="
-          relative
-          left-1/2
-          mt-2
-          w-screen
-          -translate-x-1/2
-          overflow-hidden
-          py-3
-        "
+  relative
+  left-1/2
+  mt-1
+  w-screen
+  -translate-x-1/2
+  overflow-hidden
+  py-2.5
+  sm:py-3
+"
       >
         {/* Rail line */}
 
@@ -528,39 +543,45 @@ export default function Skills() {
           "
         />
 
-        {/* Left fade */}
+       {/* Left fade */}
 
-        <div
-          className="
-            pointer-events-none
-            absolute
-            left-0
-            top-0
-            z-20
-            h-full
-            w-24
-            bg-gradient-to-r
-            from-bg
-            to-transparent
-          "
-        />
+<div
+  className="
+    pointer-events-none
+    absolute
+    left-0
+    top-0
+    z-20
+    h-full
+    w-12
+    bg-gradient-to-r
+    from-bg
+    via-bg/80
+    to-transparent
+    sm:w-20
+    lg:w-24
+  "
+/>
 
-        {/* Right fade */}
+{/* Right fade */}
 
-        <div
-          className="
-            pointer-events-none
-            absolute
-            right-0
-            top-0
-            z-20
-            h-full
-            w-24
-            bg-gradient-to-l
-            from-bg
-            to-transparent
-          "
-        />
+<div
+  className="
+    pointer-events-none
+    absolute
+    right-0
+    top-0
+    z-20
+    h-full
+    w-12
+    bg-gradient-to-l
+    from-bg
+    via-bg/80
+    to-transparent
+    sm:w-20
+    lg:w-24
+  "
+/>
 
         {/* Moving content */}
 

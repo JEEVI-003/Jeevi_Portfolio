@@ -143,30 +143,34 @@ export default function About() {
         ========================================== */}
 
         <div
-          className="
-            mt-14
-            grid
-            gap-8
-            lg:grid-cols-[0.78fr_1.22fr]
-            lg:gap-10
-          "
-        >
+  className="
+    mt-10
+    grid
+    gap-6
+    sm:mt-12
+    sm:gap-8
+    lg:grid-cols-[0.78fr_1.22fr]
+    lg:gap-10
+  "
+>
           {/* LEFT — PROFILE SUMMARY */}
 
           <motion.div
-            variants={reveal}
-            className="
-              relative
-              overflow-hidden
-              rounded-[28px]
-              border
-              border-blue-500/15
-              bg-surface/[0.68]
-              p-7
-              backdrop-blur-xl
-              sm:p-9
-            "
-          >
+  variants={reveal}
+  className="
+    relative
+    overflow-hidden
+    rounded-[24px]
+    border
+    border-blue-500/15
+    bg-surface/[0.68]
+    p-5
+    backdrop-blur-xl
+    sm:rounded-[28px]
+    sm:p-7
+    lg:p-9
+  "
+>
             {/* Accent line */}
 
             <div
@@ -196,37 +200,42 @@ export default function About() {
             </p>
 
             <h3
-              className="
-                mt-4
-                max-w-md
-                font-display
-                text-3xl
-                font-semibold
-                leading-tight
-                tracking-[-0.03em]
-                text-text-primary
-                sm:text-4xl
-              "
-            >
-              Building practical software across backend and application
-              development.
-            </h3>
+  className="
+    mt-3
+    max-w-md
+    font-display
+    text-2xl
+    font-semibold
+    leading-[1.15]
+    tracking-[-0.03em]
+    text-text-primary
+    sm:mt-4
+    sm:text-3xl
+    lg:text-4xl
+  "
+>
+  Building practical software across backend and application
+  development.
+</h3>
 
             <p
-              className="
-                mt-6
-                text-base
-                leading-7
-                text-text-secondary
-                sm:text-lg
-                sm:leading-8
-              "
-            >
-              I’m a Software Engineer with hands-on internship experience in
-              Flutter and Spring Boot development. My work is focused on
-              building applications, backend services, REST APIs, database
-              driven workflows, and user-facing software.
-            </p>
+  className="
+    mt-5
+    text-sm
+    leading-6
+    text-text-secondary
+    sm:mt-6
+    sm:text-base
+    sm:leading-7
+    lg:text-lg
+    lg:leading-8
+  "
+>
+  I’m a Software Engineer with hands-on internship experience in
+  Flutter and Spring Boot development. My work is focused on
+  building applications, backend services, REST APIs, database
+  driven workflows, and user-facing software.
+</p>
 
             <div
               className="
@@ -261,18 +270,19 @@ export default function About() {
           {/* RIGHT — STORY */}
 
           <motion.div
-            variants={reveal}
-            className="
-              rounded-[28px]
-              border
-              border-border-subtle
-              bg-surface/[0.55]
-              p-7
-              backdrop-blur-xl
-              sm:p-9
-              lg:p-10
-            "
-          >
+  variants={reveal}
+  className="
+    rounded-[24px]
+    border
+    border-border-subtle
+    bg-surface/[0.55]
+    p-5
+    backdrop-blur-xl
+    sm:rounded-[28px]
+    sm:p-7
+    lg:p-10
+  "
+>
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p
@@ -320,19 +330,21 @@ export default function About() {
               </div>
             </div>
 
-            <div className="mt-7 space-y-5">
-              {about.paragraphs?.slice(0, 3).map(
+<div className="mt-5 space-y-4 sm:mt-7 sm:space-y-5">
+                {about.paragraphs?.slice(0, 3).map(
                 (paragraph, index) => (
                   <motion.p
                     key={index}
                     variants={reveal}
                     className="
-                      text-base
-                      leading-7
-                      text-text-secondary
-                      sm:text-lg
-                      sm:leading-8
-                    "
+                     text-sm
+                     leading-6
+                         text-text-secondary
+                       sm:text-base
+                      sm:leading-7
+                      lg:text-lg
+                       lg:leading-8
+                        "
                   >
                     {paragraph}
                   </motion.p>
@@ -386,8 +398,10 @@ export default function About() {
 <motion.div
   variants={reveal}
   className="
-    mt-20
-  "
+  mt-12
+  sm:mt-16
+  lg:mt-20
+"
 >
   {/* =========================================
       CORE AREAS TOP ROW
@@ -402,15 +416,16 @@ export default function About() {
     "
   >
     <div
-      className="
-        flex
-        flex-col
-        gap-6
-        lg:flex-row
-        lg:items-center
-        lg:gap-10
-      "
-    >
+  className="
+    flex
+    flex-col
+    gap-4
+    sm:gap-5
+    lg:flex-row
+    lg:items-center
+    lg:gap-10
+  "
+>
       {/* =====================================
           LEFT — STATIC CORE AREAS
       ====================================== */}
@@ -645,23 +660,26 @@ export default function About() {
                 y: -2,
               }}
               className={`
-                shrink-0
-                rounded-full
-                border
-                px-4
-                py-2
-                font-mono
-                text-xs
-                font-semibold
-                tracking-wide
-                backdrop-blur-md
-                transition-all
-                duration-300
-                sm:px-5
-                sm:py-2.5
-                sm:text-sm
-                ${tech.color}
-              `}
+  shrink-0
+  rounded-full
+  border
+  px-3
+  py-1.5
+  font-mono
+  text-[10px]
+  font-semibold
+  tracking-wide
+  backdrop-blur-md
+  transition-all
+  duration-300
+  sm:px-4
+  sm:py-2
+  sm:text-xs
+  lg:px-5
+  lg:py-2.5
+  lg:text-sm
+  ${tech.color}
+`}
             >
               {tech.name}
             </motion.span>
@@ -676,19 +694,20 @@ export default function About() {
   ========================================== */}
 
   <h3
-    className="
-      mt-8
-      font-display
-      text-3xl
-      font-semibold
-      tracking-[-0.035em]
-      text-text-primary
-      sm:text-4xl
-      md:text-[2.6rem]
-    "
-  >
-    What I work with
-  </h3>
+  className="
+    mt-6
+    font-display
+    text-2xl
+    font-semibold
+    tracking-[-0.035em]
+    text-text-primary
+    sm:mt-8
+    sm:text-3xl
+    md:text-[2.6rem]
+  "
+>
+  What I work with
+</h3>
 
   {/* =========================================
       CORE AREA CARDS
@@ -717,26 +736,30 @@ export default function About() {
             duration: 0.25,
           }}
           className="
-            group
-            relative
-            flex
-            min-h-[330px]
-            flex-col
-            overflow-hidden
-            rounded-[26px]
-            border
-            border-border-subtle
-            bg-surface/[0.68]
-            p-6
-            backdrop-blur-xl
-            transition-all
-            duration-300
-            hover:border-blue-500/45
-            hover:bg-surface/[0.82]
-            hover:shadow-[0_24px_70px_-32px_rgba(37,99,235,0.7)]
-            sm:p-7
-          "
-        >
+  group
+  relative
+  flex
+  min-h-[270px]
+  flex-col
+  overflow-hidden
+  rounded-[24px]
+  border
+  border-border-subtle
+  bg-surface/[0.68]
+  p-5
+  backdrop-blur-xl
+  transition-all
+  duration-300
+  hover:border-blue-500/45
+  hover:bg-surface/[0.82]
+  hover:shadow-[0_24px_70px_-32px_rgba(37,99,235,0.7)]
+  sm:min-h-[300px]
+  sm:p-6
+  lg:min-h-[330px]
+  lg:rounded-[26px]
+  lg:p-7
+"
+>
           {/* Decorative glow */}
 
           <div
@@ -822,34 +845,36 @@ export default function About() {
           {/* Label */}
 
           <p
-            className="
-              relative
-              mt-7
-              font-mono
-              text-[10px]
-              uppercase
-              tracking-[0.24em]
-              text-text-muted
-            "
-          >
-            {card.label}
-          </p>
+  className="
+    relative
+    mt-5
+    font-mono
+    text-[10px]
+    uppercase
+    tracking-[0.24em]
+    text-text-muted
+    sm:mt-7
+  "
+>
+  {card.label}
+</p>
 
           {/* Title */}
 
           <h4
-            className="
-              relative
-              mt-2
-              font-display
-              text-2xl
-              font-semibold
-              tracking-[-0.025em]
-              text-text-primary
-            "
-          >
-            {card.title}
-          </h4>
+  className="
+    relative
+    mt-2
+    font-display
+    text-xl
+    font-semibold
+    tracking-[-0.025em]
+    text-text-primary
+    sm:text-2xl
+  "
+>
+  {card.title}
+</h4>
 
           {/* Description */}
 
@@ -932,21 +957,22 @@ export default function About() {
           {/* Internship */}
 
           <div
-            className="
-              relative
-              overflow-hidden
-              rounded-3xl
-              border
-              border-blue-500/20
-              bg-gradient-to-br
-              from-blue-500/[0.08]
-              via-surface/[0.68]
-              to-surface/[0.48]
-              p-7
-              backdrop-blur-xl
-              sm:p-9
-            "
-          >
+  className="
+    relative
+    overflow-hidden
+    rounded-3xl
+    border
+    border-blue-500/20
+    bg-gradient-to-br
+    from-blue-500/[0.08]
+    via-surface/[0.68]
+    to-surface/[0.48]
+    p-5
+    backdrop-blur-xl
+    sm:p-7
+    lg:p-9
+  "
+>
             <div
               className="
                 absolute
@@ -1158,20 +1184,25 @@ function StatBlock({ value, label }) {
   return (
     <div
       className="
-        rounded-2xl
+        min-w-0
+        rounded-xl
         border
         border-border-subtle
         bg-bg-alt/[0.55]
-        p-4
+        p-3.5
+        sm:rounded-2xl
+        sm:p-4
       "
     >
       <p
         className="
+          truncate
           font-display
-          text-base
+          text-sm
           font-semibold
           text-text-primary
-          sm:text-lg
+          sm:text-base
+          lg:text-lg
         "
       >
         {value}
@@ -1181,10 +1212,12 @@ function StatBlock({ value, label }) {
         className="
           mt-1
           font-mono
-          text-[10px]
+          text-[9px]
           uppercase
-          tracking-[0.14em]
+          tracking-[0.12em]
           text-text-muted
+          sm:text-[10px]
+          sm:tracking-[0.14em]
         "
       >
         {label}

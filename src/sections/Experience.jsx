@@ -10,6 +10,10 @@ import {
 
 import SectionHeading from "../components/SectionHeading";
 
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
 const container = {
   hidden: {},
   show: {
@@ -25,6 +29,7 @@ const reveal = {
     opacity: 0,
     y: 24,
   },
+
   show: {
     opacity: 1,
     y: 0,
@@ -34,6 +39,10 @@ const reveal = {
     },
   },
 };
+
+/* =========================================================
+   EXPERIENCE DATA
+========================================================= */
 
 const responsibilities = [
   "Developed and maintained cross-platform application features using Flutter and Dart.",
@@ -58,6 +67,10 @@ const technologies = [
   "REST APIs",
 ];
 
+/* =========================================================
+   EXPERIENCE SECTION
+========================================================= */
+
 export default function Experience() {
   return (
     <section
@@ -68,11 +81,14 @@ export default function Experience() {
         scroll-mt-24
         overflow-hidden
         bg-transparent
-        py-24
+        py-16
+        sm:py-20
         md:py-32
       "
     >
-      {/* Ambient light */}
+      {/* =================================================
+          AMBIENT LIGHT
+      ================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
         <div
@@ -102,6 +118,10 @@ export default function Experience() {
         />
       </div>
 
+      {/* =================================================
+          MAIN CONTAINER
+      ================================================== */}
+
       <motion.div
         variants={container}
         initial="hidden"
@@ -116,25 +136,33 @@ export default function Experience() {
           mx-auto
           w-full
           max-w-7xl
-          px-6
+          px-5
+          sm:px-6
           md:px-10
           xl:px-12
         "
       >
-        {/* =========================================
+        {/* =================================================
             SECTION HEADER
-        ========================================== */}
+        ================================================== */}
 
         <SectionHeading
           eyebrow="Experience"
           title="My Professional Journey"
         />
 
-        {/* =========================================
+        {/* =================================================
             TIMELINE
-        ========================================== */}
+        ================================================== */}
 
-        <div className="relative mt-14">
+        <div
+          className="
+            relative
+            mt-10
+            sm:mt-12
+            lg:mt-14
+          "
+        >
           {/* Timeline line */}
 
           <div
@@ -183,7 +211,9 @@ export default function Experience() {
             />
           </div>
 
-          {/* Experience item */}
+          {/* =================================================
+              EXPERIENCE ITEM
+          ================================================== */}
 
           <motion.article
             variants={reveal}
@@ -192,12 +222,14 @@ export default function Experience() {
               md:ml-12
             "
           >
-            {/* Main experience card */}
+            {/* =================================================
+                MAIN EXPERIENCE CARD
+            ================================================== */}
 
             <div
               className="
                 overflow-hidden
-                rounded-[28px]
+                rounded-[24px]
                 border
                 border-border-subtle
                 bg-surface/[0.68]
@@ -206,18 +238,19 @@ export default function Experience() {
                 duration-300
                 hover:border-blue-500/35
                 hover:shadow-[0_25px_70px_-35px_rgba(37,99,235,0.7)]
+                sm:rounded-[28px]
               "
             >
-              {/* =====================================
+                            {/* =================================================
                   EXPERIENCE HEADER
-              ====================================== */}
+              ================================================== */}
 
               <div
                 className="
                   border-b
                   border-border-subtle
-                  p-7
-                  sm:p-9
+                  p-5
+                  sm:p-7
                   lg:p-10
                 "
               >
@@ -225,19 +258,23 @@ export default function Experience() {
                   className="
                     flex
                     flex-col
-                    gap-6
+                    gap-4
+                    sm:gap-5
                     lg:flex-row
                     lg:items-start
                     lg:justify-between
+                    lg:gap-8
                   "
                 >
+                  {/* LEFT — EXPERIENCE DETAILS */}
+
                   <div className="min-w-0">
                     {/* Company label */}
 
                     <div className="flex items-center gap-3">
                       <BriefcaseBusiness
                         size={17}
-                        className="text-blue-400"
+                        className="shrink-0 text-blue-400"
                       />
 
                       <p
@@ -258,13 +295,15 @@ export default function Experience() {
 
                     <h3
                       className="
-                        mt-4
+                        mt-3
                         font-display
-                        text-2xl
+                        text-xl
                         font-semibold
+                        leading-tight
                         tracking-[-0.025em]
                         text-text-primary
-                        sm:text-3xl
+                        sm:mt-4
+                        sm:text-2xl
                         lg:text-4xl
                       "
                     >
@@ -275,14 +314,16 @@ export default function Experience() {
 
                     <div
                       className="
-                        mt-4
+                        mt-3
                         flex
                         flex-wrap
                         items-center
-                        gap-x-5
+                        gap-x-4
                         gap-y-2
                         text-sm
                         text-text-muted
+                        sm:mt-4
+                        sm:gap-x-5
                       "
                     >
                       <span className="inline-flex items-center gap-2">
@@ -290,22 +331,28 @@ export default function Experience() {
                           size={15}
                           className="text-blue-400"
                         />
+
                         Madurai, Tamil Nadu
                       </span>
                     </div>
                   </div>
 
-                  {/* Duration */}
+                  {/* =================================================
+                      DURATION
+                  ================================================== */}
 
                   <div
                     className="
+                      w-full
                       shrink-0
                       rounded-2xl
                       border
                       border-blue-500/20
                       bg-blue-500/[0.04]
                       px-4
-                      py-3
+                      py-2.5
+                      sm:w-auto
+                      sm:py-3
                     "
                   >
                     <div className="flex items-center gap-2">
@@ -328,35 +375,42 @@ export default function Experience() {
 
                     <p
                       className="
-  rounded-full
-  border
-  border-blue-400/25
-  bg-blue-500/[0.06]
-  px-3
-  py-1.5
-  font-mono
-  text-[10px]
-  uppercase
-  tracking-[0.15em]
-  text-blue-200
-"
+                        mt-2
+                        inline-flex
+                        rounded-full
+                        border
+                        border-blue-400/25
+                        bg-blue-500/[0.06]
+                        px-3
+                        py-1.5
+                        font-mono
+                        text-[10px]
+                        uppercase
+                        tracking-[0.15em]
+                        text-blue-200
+                      "
                     >
                       6 Months
                     </p>
                   </div>
                 </div>
 
-                {/* Role summary */}
+                {/* =================================================
+                    ROLE SUMMARY
+                ================================================== */}
 
                 <p
                   className="
-                    mt-7
+                    mt-5
                     max-w-4xl
-                    text-base
-                    leading-7
+                    text-sm
+                    leading-6
                     text-text-secondary
-                    sm:text-lg
-                    sm:leading-8
+                    sm:mt-7
+                    sm:text-base
+                    sm:leading-7
+                    lg:text-lg
+                    lg:leading-8
                   "
                 >
                   Worked across Flutter and Spring Boot development,
@@ -365,404 +419,437 @@ export default function Experience() {
                   and database-backed functionality.
                 </p>
               </div>
+                            {/* =================================================
+                  RESPONSIBILITIES + ACHIEVEMENTS
+              ================================================== */}
 
-              
+              <div
+                className="
+                  grid
+                  divide-y
+                  divide-border-subtle
+                  lg:grid-cols-2
+                  lg:divide-x
+                  lg:divide-y-0
+                "
+              >
+                {/* =================================================
+                    RESPONSIBILITIES
+                ================================================== */}
 
-              {/* =====================================
-    RESPONSIBILITIES + ACHIEVEMENTS
-====================================== */}
+                <div
+                  className="
+                    relative
+                    overflow-hidden
+                    bg-gradient-to-br
+                    from-blue-500/[0.045]
+                    via-transparent
+                    to-transparent
+                    p-5
+                    sm:p-7
+                    lg:p-9
+                  "
+                >
+                  {/* Accent glow */}
 
-<div
-  className="
-    grid
-    divide-y
-    divide-border-subtle
-    lg:grid-cols-2
-    lg:divide-x
-    lg:divide-y-0
-  "
->
-  {/* =====================================
-      RESPONSIBILITIES
-  ====================================== */}
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      -right-16
+                      -top-16
+                      h-40
+                      w-40
+                      rounded-full
+                      bg-blue-500/[0.08]
+                      blur-3xl
+                    "
+                  />
 
-  <div
-    className="
-      relative
-      overflow-hidden
-      bg-gradient-to-br
-      from-blue-500/[0.045]
-      via-transparent
-      to-transparent
-      p-7
-      sm:p-9
-    "
-  >
-    {/* Accent glow */}
+                  <div className="relative">
+                    {/* Heading */}
 
-    <div
-      className="
-        pointer-events-none
-        absolute
-        -right-16
-        -top-16
-        h-40
-        w-40
-        rounded-full
-        bg-blue-500/[0.08]
-        blur-3xl
-      "
-    />
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="
+                          flex
+                          h-10
+                          w-10
+                          shrink-0
+                          items-center
+                          justify-center
+                          rounded-xl
+                          border
+                          border-blue-400/25
+                          bg-blue-500/[0.07]
+                          text-blue-300
+                          shadow-[0_0_24px_-12px_rgba(59,130,246,0.8)]
+                          sm:h-11
+                          sm:w-11
+                        "
+                      >
+                        <Code2
+                          size={18}
+                          strokeWidth={1.8}
+                        />
+                      </div>
 
-    <div className="relative">
-      <div className="flex items-center gap-3">
-        <div
-          className="
-            flex
-            h-11
-            w-11
-            items-center
-            justify-center
-            rounded-xl
-            border
-            border-blue-400/25
-            bg-blue-500/[0.07]
-            text-blue-300
-            shadow-[0_0_24px_-12px_rgba(59,130,246,0.8)]
-          "
-        >
-          <Code2
-            size={19}
-            strokeWidth={1.8}
-          />
-        </div>
+                      <div>
+                        <p
+                          className="
+                            font-mono
+                            text-[10px]
+                            uppercase
+                            tracking-[0.24em]
+                            text-blue-400
+                          "
+                        >
+                          Responsibilities
+                        </p>
 
-        <div>
-          <p
-            className="
-              font-mono
-              text-[10px]
-              uppercase
-              tracking-[0.24em]
-              text-blue-400
-            "
-          >
-            Responsibilities
-          </p>
+                        <h4
+                          className="
+                            mt-1
+                            font-display
+                            text-lg
+                            font-semibold
+                            text-text-primary
+                            sm:text-2xl
+                          "
+                        >
+                          What I worked on
+                        </h4>
+                      </div>
+                    </div>
 
-          <h4
-            className="
-              mt-1
-              font-display
-              text-xl
-              font-semibold
-              text-text-primary
-              sm:text-2xl
-            "
-          >
-            What I worked on
-          </h4>
-        </div>
-      </div>
+                    {/* Responsibilities list */}
 
-      <ul className="mt-8 space-y-4">
-        {responsibilities.map((item, index) => (
-          <motion.li
-            key={item}
-            initial={{
-              opacity: 0,
-              x: -10,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.7,
-            }}
-            transition={{
-              duration: 0.35,
-              delay: index * 0.06,
-            }}
-            className="
-              group
-              flex
-              items-start
-              gap-3
-              text-sm
-              leading-6
-              text-text-secondary
-              sm:text-base
-            "
-          >
-            <span
-              className="
-                mt-[8px]
-                h-1.5
-                w-1.5
-                shrink-0
-                rounded-full
-                bg-blue-400
-                shadow-[0_0_12px_rgba(59,130,246,0.8)]
-                transition-all
-                duration-200
-                group-hover:scale-125
-                group-hover:bg-cyan-300
-              "
-            />
+                    <ul
+                      className="
+                        mt-6
+                        space-y-3.5
+                        sm:mt-8
+                        sm:space-y-4
+                      "
+                    >
+                      {responsibilities.map(
+                        (item, index) => (
+                          <motion.li
+                            key={item}
+                            initial={{
+                              opacity: 0,
+                              x: -10,
+                            }}
+                            whileInView={{
+                              opacity: 1,
+                              x: 0,
+                            }}
+                            viewport={{
+                              once: true,
+                              amount: 0.7,
+                            }}
+                            transition={{
+                              duration: 0.35,
+                              delay: index * 0.06,
+                            }}
+                            className="
+                              group
+                              flex
+                              items-start
+                              gap-3
+                              text-sm
+                              leading-6
+                              text-text-secondary
+                              sm:text-base
+                            "
+                          >
+                            <span
+                              className="
+                                mt-[8px]
+                                h-1.5
+                                w-1.5
+                                shrink-0
+                                rounded-full
+                                bg-blue-400
+                                shadow-[0_0_12px_rgba(59,130,246,0.8)]
+                                transition-all
+                                duration-200
+                                group-hover:scale-125
+                                group-hover:bg-cyan-300
+                              "
+                            />
 
-            <span className="transition-colors duration-200 group-hover:text-text-primary">
-              {item}
-            </span>
-          </motion.li>
-        ))}
-      </ul>
-    </div>
-  </div>
+                            <span className="transition-colors duration-200 group-hover:text-text-primary">
+                              {item}
+                            </span>
+                          </motion.li>
+                        )
+                      )}
+                    </ul>
+                  </div>
+                </div>
 
-  {/* =====================================
-      KEY ACHIEVEMENTS
-  ====================================== */}
+                {/* =================================================
+                    KEY ACHIEVEMENTS
+                ================================================== */}
 
-  <div
-    className="
-      relative
-      overflow-hidden
-      bg-gradient-to-br
-      from-cyan-400/[0.035]
-      via-transparent
-      to-purple-500/[0.025]
-      p-7
-      sm:p-9
-    "
-  >
-    {/* Accent glow */}
+                <div
+                  className="
+                    relative
+                    overflow-hidden
+                    bg-gradient-to-br
+                    from-cyan-400/[0.035]
+                    via-transparent
+                    to-purple-500/[0.025]
+                    p-5
+                    sm:p-7
+                    lg:p-9
+                  "
+                >
+                  {/* Accent glow */}
 
-    <div
-      className="
-        pointer-events-none
-        absolute
-        -right-16
-        top-0
-        h-44
-        w-44
-        rounded-full
-        bg-cyan-400/[0.06]
-        blur-3xl
-      "
-    />
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      -right-16
+                      top-0
+                      h-44
+                      w-44
+                      rounded-full
+                      bg-cyan-400/[0.06]
+                      blur-3xl
+                    "
+                  />
 
-    <div
-      className="
-        pointer-events-none
-        absolute
-        bottom-0
-        left-1/2
-        h-32
-        w-40
-        -translate-x-1/2
-        rounded-full
-        bg-purple-500/[0.05]
-        blur-3xl
-      "
-    />
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      bottom-0
+                      left-1/2
+                      h-32
+                      w-40
+                      -translate-x-1/2
+                      rounded-full
+                      bg-purple-500/[0.05]
+                      blur-3xl
+                    "
+                  />
 
-    <div className="relative">
-      <div className="flex items-center gap-3">
-        <div
-          className="
-            flex
-            h-11
-            w-11
-            items-center
-            justify-center
-            rounded-xl
-            border
-            border-cyan-300/25
-            bg-cyan-400/[0.06]
-            text-cyan-300
-            shadow-[0_0_24px_-12px_rgba(34,211,238,0.8)]
-          "
-        >
-          <Trophy
-            size={19}
-            strokeWidth={1.8}
-          />
-        </div>
+                  <div className="relative">
+                    {/* Heading */}
 
-        <div>
-          <p
-            className="
-              font-mono
-              text-[10px]
-              uppercase
-              tracking-[0.24em]
-              text-cyan-300
-            "
-          >
-            Key Achievements
-          </p>
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="
+                          flex
+                          h-10
+                          w-10
+                          shrink-0
+                          items-center
+                          justify-center
+                          rounded-xl
+                          border
+                          border-cyan-300/25
+                          bg-cyan-400/[0.06]
+                          text-cyan-300
+                          shadow-[0_0_24px_-12px_rgba(34,211,238,0.8)]
+                          sm:h-11
+                          sm:w-11
+                        "
+                      >
+                        <Trophy
+                          size={18}
+                          strokeWidth={1.8}
+                        />
+                      </div>
 
-          <h4
-            className="
-              mt-1
-              font-display
-              text-xl
-              font-semibold
-              text-text-primary
-              sm:text-2xl
-            "
-          >
-            Growth &amp; Contributions
-          </h4>
-        </div>
-      </div>
+                      <div>
+                        <p
+                          className="
+                            font-mono
+                            text-[10px]
+                            uppercase
+                            tracking-[0.24em]
+                            text-cyan-300
+                          "
+                        >
+                          Key Achievements
+                        </p>
 
-      <ul className="mt-8 space-y-4">
-        {achievements.map((item, index) => (
-          <motion.li
-            key={item}
-            initial={{
-              opacity: 0,
-              x: 10,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.7,
-            }}
-            transition={{
-              duration: 0.35,
-              delay: index * 0.06,
-            }}
-            className="
-              group
-              flex
-              items-start
-              gap-3
-              text-sm
-              leading-6
-              text-text-secondary
-              sm:text-base
-            "
-          >
-            <CheckCircle2
-              size={17}
-              className="
-                mt-1
-                shrink-0
-                text-emerald-300
-                transition-all
-                duration-200
-                group-hover:scale-110
-                group-hover:text-emerald-200
-                group-hover:drop-shadow-[0_0_8px_rgba(110,231,183,0.6)]
-              "
-            />
+                        <h4
+                          className="
+                            mt-1
+                            font-display
+                            text-lg
+                            font-semibold
+                            text-text-primary
+                            sm:text-2xl
+                          "
+                        >
+                          Growth &amp; Contributions
+                        </h4>
+                      </div>
+                    </div>
 
-            <span className="transition-colors duration-200 group-hover:text-text-primary">
-              {item}
-            </span>
-          </motion.li>
-        ))}
-      </ul>
-    </div>
-  </div>
-</div>
+                    {/* Achievements list */}
 
-{/* =====================================
-    TECHNOLOGY STACK
-====================================== */}
+                    <ul
+                      className="
+                        mt-6
+                        space-y-3.5
+                        sm:mt-8
+                        sm:space-y-4
+                      "
+                    >
+                      {achievements.map(
+                        (item, index) => (
+                          <motion.li
+                            key={item}
+                            initial={{
+                              opacity: 0,
+                              x: 10,
+                            }}
+                            whileInView={{
+                              opacity: 1,
+                              x: 0,
+                            }}
+                            viewport={{
+                              once: true,
+                              amount: 0.7,
+                            }}
+                            transition={{
+                              duration: 0.35,
+                              delay: index * 0.06,
+                            }}
+                            className="
+                              group
+                              flex
+                              items-start
+                              gap-3
+                              text-sm
+                              leading-6
+                              text-text-secondary
+                              sm:text-base
+                            "
+                          >
+                            <CheckCircle2
+                              size={17}
+                              className="
+                                mt-1
+                                shrink-0
+                                text-emerald-300
+                                transition-all
+                                duration-200
+                                group-hover:scale-110
+                                group-hover:text-emerald-200
+                                group-hover:drop-shadow-[0_0_8px_rgba(110,231,183,0.6)]
+                              "
+                            />
 
-<div
-  className="
-    border-t
-    border-border-subtle
-    bg-gradient-to-r
-    from-blue-500/[0.025]
-    via-transparent
-    to-cyan-500/[0.025]
-    px-7
-    py-6
-    sm:px-9
-  "
->
-  <div
-    className="
-      flex
-      flex-wrap
-      items-center
-      gap-3
-    "
-  >
-    <span
-      className="
-        mr-1
-        font-mono
-        text-[10px]
-        uppercase
-        tracking-[0.22em]
-        text-text-muted
-      "
-    >
-      Technology
-    </span>
+                            <span className="transition-colors duration-200 group-hover:text-text-primary">
+                              {item}
+                            </span>
+                          </motion.li>
+                        )
+                      )}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+                            {/* =================================================
+                  TECHNOLOGY STACK
+              ================================================== */}
 
-    {technologies.map((technology, index) => (
-      <motion.span
-        key={technology}
-        initial={{
-          opacity: 0,
-          y: 8,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.8,
-        }}
-        transition={{
-          duration: 0.3,
-          delay: index * 0.05,
-        }}
-        whileHover={{
-          y: -2,
-        }}
-        className="
-          rounded-xl
-          border
-          border-blue-400/15
-          bg-white/[0.02]
-          px-3.5
-          py-1.5
-          font-mono
-          text-xs
-          font-medium
-          text-text-secondary
-          backdrop-blur-sm
-          transition-all
-          duration-300
-          hover:border-blue-400/40
-          hover:bg-blue-500/[0.06]
-          hover:text-blue-200
-          hover:shadow-[0_8px_24px_-14px_rgba(59,130,246,0.7)]
-        "
-      >
-        {technology}
-      </motion.span>
-    ))}
-  </div>
-</div>
+              <div
+                className="
+                  border-t
+                  border-border-subtle
+                  bg-gradient-to-r
+                  from-blue-500/[0.025]
+                  via-transparent
+                  to-cyan-500/[0.025]
+                  px-5
+                  py-5
+                  sm:px-7
+                  lg:px-9
+                "
+              >
+                <div
+                  className="
+                    flex
+                    flex-wrap
+                    items-center
+                    gap-2.5
+                    sm:gap-3
+                  "
+                >
+                  <span
+                    className="
+                      mr-1
+                      font-mono
+                      text-[10px]
+                      uppercase
+                      tracking-[0.22em]
+                      text-text-muted
+                    "
+                  >
+                    Technology
+                  </span>
 
-             
-
-             
+                  {technologies.map(
+                    (technology, index) => (
+                      <motion.span
+                        key={technology}
+                        initial={{
+                          opacity: 0,
+                          y: 8,
+                        }}
+                        whileInView={{
+                          opacity: 1,
+                          y: 0,
+                        }}
+                        viewport={{
+                          once: true,
+                          amount: 0.8,
+                        }}
+                        transition={{
+                          duration: 0.3,
+                          delay: index * 0.05,
+                        }}
+                        whileHover={{
+                          y: -2,
+                        }}
+                        className="
+                          rounded-lg
+                          border
+                          border-blue-400/15
+                          bg-white/[0.02]
+                          px-2.5
+                          py-1.5
+                          font-mono
+                          text-[11px]
+                          font-medium
+                          text-text-secondary
+                          backdrop-blur-sm
+                          transition-all
+                          duration-300
+                          hover:border-blue-400/40
+                          hover:bg-blue-500/[0.06]
+                          hover:text-blue-200
+                          hover:shadow-[0_8px_24px_-14px_rgba(59,130,246,0.7)]
+                          sm:rounded-xl
+                          sm:px-3.5
+                          sm:text-xs
+                        "
+                      >
+                        {technology}
+                      </motion.span>
+                    )
+                  )}
+                </div>
+              </div>
             </div>
           </motion.article>
         </div>

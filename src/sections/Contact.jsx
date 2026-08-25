@@ -7,11 +7,19 @@ import {
 } from "lucide-react";
 
 import SectionHeading from "../components/SectionHeading";
-import { GithubIcon, LinkedinIcon } from "../components/BrandIcons";
+import {
+  GithubIcon,
+  LinkedinIcon,
+} from "../components/BrandIcons";
 import { contact } from "../data/portfolio";
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 
 const container = {
   hidden: {},
+
   show: {
     transition: {
       staggerChildren: 0.1,
@@ -36,6 +44,10 @@ const reveal = {
   },
 };
 
+/* =========================================================
+   CONTACT ITEMS
+========================================================= */
+
 const contactItems = [
   {
     label: "Email",
@@ -45,6 +57,7 @@ const contactItems = [
     icon: Mail,
     accent: "blue",
   },
+
   {
     label: "Phone",
     value: contact.phone,
@@ -53,6 +66,7 @@ const contactItems = [
     icon: Phone,
     accent: "cyan",
   },
+
   {
     label: "LinkedIn",
     value: "linkedin.com/in/jeevikesh-s-n",
@@ -61,6 +75,7 @@ const contactItems = [
     icon: LinkedinIcon,
     accent: "sky",
   },
+
   {
     label: "GitHub",
     value: "github.com/JEEVI-003",
@@ -71,12 +86,18 @@ const contactItems = [
   },
 ];
 
+/* =========================================================
+   ACCENT STYLES
+========================================================= */
+
 const accentStyles = {
   blue: {
     icon:
       "border-blue-400/20 bg-blue-500/[0.06] text-blue-300 group-hover:border-blue-400/45 group-hover:bg-blue-500/[0.1]",
+
     line:
       "from-transparent via-blue-400/60 to-transparent",
+
     glow:
       "group-hover:shadow-[0_0_35px_-16px_rgba(59,130,246,0.8)]",
   },
@@ -84,8 +105,10 @@ const accentStyles = {
   cyan: {
     icon:
       "border-cyan-400/20 bg-cyan-500/[0.06] text-cyan-300 group-hover:border-cyan-400/45 group-hover:bg-cyan-500/[0.1]",
+
     line:
       "from-transparent via-cyan-400/60 to-transparent",
+
     glow:
       "group-hover:shadow-[0_0_35px_-16px_rgba(34,211,238,0.8)]",
   },
@@ -93,8 +116,10 @@ const accentStyles = {
   sky: {
     icon:
       "border-sky-400/20 bg-sky-500/[0.06] text-sky-300 group-hover:border-sky-400/45 group-hover:bg-sky-500/[0.1]",
+
     line:
       "from-transparent via-sky-400/60 to-transparent",
+
     glow:
       "group-hover:shadow-[0_0_35px_-16px_rgba(56,189,248,0.8)]",
   },
@@ -102,12 +127,18 @@ const accentStyles = {
   violet: {
     icon:
       "border-violet-400/20 bg-violet-500/[0.06] text-violet-300 group-hover:border-violet-400/45 group-hover:bg-violet-500/[0.1]",
+
     line:
       "from-transparent via-violet-400/60 to-transparent",
+
     glow:
       "group-hover:shadow-[0_0_35px_-16px_rgba(167,139,250,0.8)]",
   },
 };
+
+/* =========================================================
+   CONTACT SECTION
+========================================================= */
 
 export default function Contact() {
   const scrollToProjects = () => {
@@ -127,7 +158,8 @@ export default function Contact() {
         scroll-mt-24
         overflow-hidden
         bg-transparent
-        py-24
+        py-16
+        sm:py-20
         md:py-32
       "
     >
@@ -141,11 +173,14 @@ export default function Contact() {
             absolute
             left-[10%]
             top-[20%]
-            h-80
-            w-80
+            h-64
+            w-64
             rounded-full
             bg-blue-600/[0.06]
-            blur-[110px]
+            blur-[100px]
+            sm:h-80
+            sm:w-80
+            sm:blur-[110px]
           "
         />
 
@@ -154,14 +189,21 @@ export default function Contact() {
             absolute
             bottom-0
             right-[8%]
-            h-96
-            w-96
+            h-72
+            w-72
             rounded-full
             bg-cyan-500/[0.035]
-            blur-[120px]
+            blur-[100px]
+            sm:h-96
+            sm:w-96
+            sm:blur-[120px]
           "
         />
       </div>
+
+      {/* =================================================
+          MAIN CONTAINER
+      ================================================== */}
 
       <motion.div
         variants={container}
@@ -177,7 +219,8 @@ export default function Contact() {
           mx-auto
           w-full
           max-w-7xl
-          px-6
+          px-5
+          sm:px-6
           md:px-10
           xl:px-12
         "
@@ -200,9 +243,11 @@ export default function Contact() {
         <motion.div
           variants={reveal}
           className="
-            mt-8
+            mt-7
             grid
-            gap-8
+            gap-6
+            sm:mt-8
+            sm:gap-8
             lg:grid-cols-[1fr_0.8fr]
             lg:items-end
           "
@@ -212,12 +257,12 @@ export default function Contact() {
               className="
                 max-w-4xl
                 font-display
-                text-3xl
+                text-2xl
                 font-semibold
                 leading-tight
                 tracking-[-0.03em]
                 text-text-primary
-                sm:text-4xl
+                sm:text-3xl
                 md:text-5xl
               "
             >
@@ -230,22 +275,28 @@ export default function Contact() {
 
             <p
               className="
-                mt-6
+                mt-4
                 max-w-3xl
-                text-base
-                leading-7
+                text-sm
+                leading-6
                 text-text-secondary
-                sm:text-lg
-                sm:leading-8
+                sm:mt-6
+                sm:text-base
+                sm:leading-7
+                lg:text-lg
+                lg:leading-8
               "
             >
-              Whether you have a project, an opportunity, or simply want to
-              talk about software development, I’m open to meaningful
+              Whether you have a project, an opportunity,
+              or simply want to talk about software
+              development, I’m open to meaningful
               conversations and new challenges.
             </p>
           </div>
 
-          {/* Availability panel */}
+          {/* =================================================
+              AVAILABILITY PANEL
+          ================================================== */}
 
           <div
             className="
@@ -255,7 +306,7 @@ export default function Contact() {
               border
               border-blue-500/15
               bg-surface/[0.45]
-              p-5
+              p-4
               backdrop-blur-md
               sm:p-6
             "
@@ -266,21 +317,23 @@ export default function Contact() {
                 absolute
                 -right-10
                 -top-10
-                h-28
-                w-28
+                h-24
+                w-24
                 rounded-full
                 bg-blue-500/[0.08]
                 blur-3xl
+                sm:h-28
+                sm:w-28
               "
             />
 
-            <div className="relative flex items-start gap-4">
+            <div className="relative flex items-start gap-3 sm:gap-4">
               <div
                 className="
                   mt-0.5
                   flex
-                  h-11
-                  w-11
+                  h-10
+                  w-10
                   shrink-0
                   items-center
                   justify-center
@@ -289,17 +342,20 @@ export default function Contact() {
                   border-emerald-400/20
                   bg-emerald-400/[0.05]
                   text-emerald-300
+                  sm:h-11
+                  sm:w-11
                 "
               >
-                <MessageCircle size={19} />
+                <MessageCircle size={18} />
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <span
                     className="
                       h-2
                       w-2
+                      shrink-0
                       rounded-full
                       bg-emerald-400
                       shadow-[0_0_12px_rgba(52,211,153,0.8)]
@@ -312,8 +368,9 @@ export default function Contact() {
                       text-[10px]
                       font-semibold
                       uppercase
-                      tracking-[0.2em]
+                      tracking-[0.15em]
                       text-emerald-300
+                      sm:tracking-[0.2em]
                     "
                   >
                     Open To Conversations
@@ -328,24 +385,27 @@ export default function Contact() {
                     text-text-secondary
                   "
                 >
-                  Software opportunities, application development,
-                  collaboration, and interesting product ideas.
+                  Software opportunities,
+                  application development,
+                  collaboration, and interesting
+                  product ideas.
                 </p>
               </div>
             </div>
           </div>
         </motion.div>
-
-        {/* =================================================
+                {/* =================================================
             CONTACT CHANNELS
         ================================================== */}
 
         <motion.div
           variants={reveal}
           className="
-            mt-12
+            mt-8
             grid
-            gap-4
+            gap-3
+            sm:mt-10
+            sm:gap-4
             md:grid-cols-2
           "
         >
@@ -392,14 +452,15 @@ export default function Contact() {
                     border
                     border-border-subtle
                     bg-surface/[0.65]
-                    p-5
+                    p-4
                     backdrop-blur-xl
                     transition-all
                     duration-300
                     hover:border-blue-500/30
                     hover:bg-surface/[0.78]
                     ${style.glow}
-                    sm:p-6
+                    sm:p-5
+                    md:p-6
                   `}
                 >
                   {/* Top accent */}
@@ -425,7 +486,8 @@ export default function Contact() {
                       flex
                       items-center
                       justify-between
-                      gap-4
+                      gap-3
+                      sm:gap-4
                     "
                   >
                     <div
@@ -433,14 +495,17 @@ export default function Contact() {
                         flex
                         min-w-0
                         items-center
-                        gap-4
+                        gap-3
+                        sm:gap-4
                       "
                     >
+                      {/* Icon */}
+
                       <span
                         className={`
                           flex
-                          h-12
-                          w-12
+                          h-10
+                          w-10
                           shrink-0
                           items-center
                           justify-center
@@ -449,20 +514,29 @@ export default function Contact() {
                           transition-all
                           duration-300
                           ${style.icon}
+                          sm:h-12
+                          sm:w-12
                         `}
                       >
-                        <Icon size={20} />
+                        <Icon
+                          size={18}
+                          className="sm:h-5 sm:w-5"
+                        />
                       </span>
+
+                      {/* Text */}
 
                       <div className="min-w-0">
                         <p
                           className="
                             font-mono
-                            text-[10px]
+                            text-[9px]
                             font-semibold
                             uppercase
-                            tracking-[0.2em]
+                            tracking-[0.16em]
                             text-text-muted
+                            sm:text-[10px]
+                            sm:tracking-[0.2em]
                           "
                         >
                           {label}
@@ -471,11 +545,14 @@ export default function Contact() {
                         <p
                           className="
                             mt-1
-                            truncate
-                            text-base
+                            break-all
+                            text-sm
                             font-semibold
+                            leading-5
                             text-text-primary
-                            sm:text-lg
+                            sm:text-base
+                            sm:leading-6
+                            lg:text-lg
                           "
                         >
                           {value}
@@ -484,8 +561,11 @@ export default function Contact() {
                         <p
                           className="
                             mt-1
-                            text-xs
+                            text-[11px]
+                            leading-5
                             text-text-muted
+                            sm:text-xs
+                            sm:leading-6
                             sm:text-sm
                           "
                         >
@@ -495,7 +575,7 @@ export default function Contact() {
                     </div>
 
                     <ArrowUpRight
-                      size={19}
+                      size={18}
                       className="
                         shrink-0
                         text-text-muted
@@ -504,6 +584,8 @@ export default function Contact() {
                         group-hover:-translate-y-1
                         group-hover:translate-x-1
                         group-hover:text-blue-300
+                        sm:h-[19px]
+                        sm:w-[19px]
                       "
                     />
                   </div>
@@ -512,8 +594,7 @@ export default function Contact() {
             }
           )}
         </motion.div>
-
-        {/* =================================================
+                {/* =================================================
             FINAL CTA
         ================================================== */}
 
@@ -521,18 +602,20 @@ export default function Contact() {
           variants={reveal}
           className="
             relative
-            mt-10
+            mt-8
             overflow-hidden
-            rounded-[28px]
+            rounded-[24px]
             border
             border-blue-500/20
             bg-gradient-to-br
             from-blue-600/[0.09]
             via-surface/[0.65]
             to-cyan-500/[0.04]
-            p-7
+            p-5
             backdrop-blur-xl
-            sm:p-9
+            sm:mt-10
+            sm:rounded-[28px]
+            sm:p-7
             lg:p-10
           "
         >
@@ -544,11 +627,14 @@ export default function Contact() {
               absolute
               -right-24
               -top-24
-              h-64
-              w-64
+              h-52
+              w-52
               rounded-full
               bg-blue-500/[0.08]
-              blur-[90px]
+              blur-[80px]
+              sm:h-64
+              sm:w-64
+              sm:blur-[90px]
             "
           />
 
@@ -558,11 +644,14 @@ export default function Contact() {
               absolute
               -bottom-24
               left-1/3
-              h-56
-              w-56
+              h-48
+              w-48
               rounded-full
               bg-cyan-400/[0.05]
-              blur-[90px]
+              blur-[80px]
+              sm:h-56
+              sm:w-56
+              sm:blur-[90px]
             "
           />
 
@@ -571,10 +660,11 @@ export default function Contact() {
               relative
               flex
               flex-col
-              gap-6
+              gap-5
               md:flex-row
               md:items-center
               md:justify-between
+              md:gap-6
             "
           >
             <div className="max-w-2xl">
@@ -584,9 +674,10 @@ export default function Contact() {
                   text-[10px]
                   font-semibold
                   uppercase
-                  tracking-[0.24em]
+                  tracking-[0.2em]
                   text-blue-400
                   sm:text-xs
+                  sm:tracking-[0.24em]
                 "
               >
                 Let’s Talk
@@ -596,10 +687,12 @@ export default function Contact() {
                 className="
                   mt-2
                   font-display
-                  text-2xl
+                  text-xl
                   font-semibold
+                  leading-tight
                   tracking-[-0.025em]
                   text-text-primary
+                  sm:text-2xl
                   sm:text-3xl
                 "
               >
@@ -613,25 +706,38 @@ export default function Contact() {
                   leading-6
                   text-text-secondary
                   sm:text-base
+                  sm:leading-7
                 "
               >
-                Start with a conversation. I’d be happy to hear about the
-                idea, problem, or opportunity you're working on.
+                Start with a conversation. I’d be
+                happy to hear about the idea,
+                problem, or opportunity you're
+                working on.
               </p>
             </div>
 
-            <div className="shrink-0">
+            {/* CTA */}
+
+            <div
+              className="
+                w-full
+                shrink-0
+                md:w-auto
+              "
+            >
               <button
                 type="button"
                 onClick={scrollToProjects}
                 className="
                   group
                   inline-flex
+                  w-full
                   items-center
+                  justify-center
                   gap-2.5
                   rounded-xl
                   bg-blue-600
-                  px-6
+                  px-5
                   py-3.5
                   text-sm
                   font-semibold
@@ -642,6 +748,8 @@ export default function Contact() {
                   hover:-translate-y-1
                   hover:bg-blue-500
                   hover:shadow-[0_18px_40px_-12px_rgba(59,130,246,0.8)]
+                  sm:px-6
+                  md:w-auto
                 "
               >
                 Explore My Work

@@ -77,6 +77,7 @@ function cleanItems(items) {
       item.trim() !== ""
   );
 }
+
 /* =========================================================
    TECHNOLOGY PILL
 ========================================================= */
@@ -101,10 +102,10 @@ function TechPill({ children, index }) {
         border
         border-blue-300/15
         bg-blue-500/[0.05]
-        px-3.5
+        px-2.5
         py-1.5
         font-mono
-        text-xs
+        text-[10px]
         text-blue-100/90
         backdrop-blur-sm
         transition-all
@@ -112,6 +113,8 @@ function TechPill({ children, index }) {
         hover:border-blue-300/40
         hover:bg-blue-500/10
         hover:text-white
+        sm:px-3.5
+        sm:text-xs
       "
     >
       {children}
@@ -153,7 +156,7 @@ function InfoGroup({ title, items }) {
               relative
               pl-4
               text-sm
-              leading-relaxed
+              leading-6
               text-text-secondary
             "
           >
@@ -177,6 +180,7 @@ function InfoGroup({ title, items }) {
     </div>
   );
 }
+
 /* =========================================================
    PROJECT BANNER
 ========================================================= */
@@ -208,14 +212,13 @@ function ProjectBanner({ project }) {
         group
         relative
         overflow-hidden
-        rounded-3xl
+        rounded-[24px]
         border
         border-blue-500/20
         bg-[#05060D]
         shadow-[0_30px_90px_-45px_rgba(37,99,235,0.7)]
+        sm:rounded-3xl
       "
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
     >
       {/* =================================================
           FUTURISTIC BANNER
@@ -224,10 +227,11 @@ function ProjectBanner({ project }) {
       <div
         className="
           relative
-          min-h-[290px]
+          min-h-[250px]
           overflow-hidden
           bg-[#05060D]
-          sm:min-h-[320px]
+          sm:min-h-[290px]
+          lg:min-h-[320px]
         "
         onClick={() =>
           setOpen((value) => !value)
@@ -408,7 +412,12 @@ function ProjectBanner({ project }) {
               animate={{
                 x: [0, 12, -6, 0],
                 y: [0, -8, 6, 0],
-                opacity: [0.12, 0.65, 0.18, 0.12],
+                opacity: [
+                  0.12,
+                  0.65,
+                  0.18,
+                  0.12,
+                ],
               }}
               transition={{
                 duration: 4 + index * 0.22,
@@ -451,13 +460,15 @@ function ProjectBanner({ project }) {
             relative
             z-10
             flex
-            min-h-[290px]
+            min-h-[250px]
             flex-col
             justify-center
-            px-7
-            py-8
-            sm:min-h-[320px]
-            sm:px-10
+            px-5
+            py-6
+            sm:min-h-[290px]
+            sm:px-8
+            sm:py-8
+            lg:min-h-[320px]
             lg:px-14
           "
         >
@@ -487,7 +498,9 @@ function ProjectBanner({ project }) {
               : "Project"}
           </span>
 
-          {/* Project title */}
+          {/* =================================================
+              PROJECT TITLE
+          ================================================== */}
 
           <button
             type="button"
@@ -499,24 +512,26 @@ function ProjectBanner({ project }) {
               group/title
               flex
               w-fit
+              max-w-full
               items-center
-              gap-3
+              gap-2.5
               text-left
               focus:outline-none
+              sm:gap-3
             "
           >
             <h3
               className="
                 font-display
-                text-5xl
+                text-3xl
                 font-semibold
-                leading-none
+                leading-tight
                 tracking-tight
                 text-white
                 transition-colors
                 duration-300
                 group-hover/title:text-blue-300
-                sm:text-6xl
+                sm:text-5xl
                 lg:text-7xl
               "
             >
@@ -530,39 +545,58 @@ function ProjectBanner({ project }) {
               transition={{
                 duration: 0.25,
               }}
-              className="text-blue-400"
+              className="
+                shrink-0
+                text-blue-400
+              "
             >
-              <ChevronDown size={28} />
+              <ChevronDown
+                size={22}
+                className="
+                  sm:h-7
+                  sm:w-7
+                "
+              />
             </motion.span>
           </button>
 
-          {/* Subtitle */}
+          {/* =================================================
+              SUBTITLE
+          ================================================== */}
 
           <p
             className="
-              mt-3
+              mt-2
               font-mono
-              text-sm
+              text-[11px]
+              leading-5
               uppercase
-              tracking-[0.18em]
+              tracking-[0.14em]
               text-blue-200/75
-              sm:text-base
+              sm:mt-3
+              sm:text-sm
+              sm:tracking-[0.18em]
+              lg:text-base
             "
           >
             {project.subtitle ||
               "Application Development"}
           </p>
 
-          {/* Technology pills */}
+          {/* =================================================
+              TECHNOLOGY PILLS
+          ================================================== */}
 
           {stack.length > 0 && (
             <div
               className="
-                mt-7
+                mt-5
                 flex
                 max-w-4xl
                 flex-wrap
-                gap-2.5
+                gap-1.5
+                sm:mt-7
+                sm:gap-2.5
               "
             >
               {stack
@@ -578,19 +612,22 @@ function ProjectBanner({ project }) {
             </div>
           )}
 
+          {/* Touch instruction */}
+
           <p
             className="
-              mt-6
-              text-sm
+              mt-5
+              text-xs
               text-white/40
+              sm:mt-6
             "
           >
-            Hover anywhere on the project
-            banner to explore
+            Tap to explore project details
           </p>
         </div>
       </div>
-            {/* =========================================================
+
+      {/* =========================================================
           DATA-DRIVEN DROPDOWN
       ========================================================== */}
 
@@ -625,9 +662,9 @@ function ProjectBanner({ project }) {
             <div
               className="
                 grid
-                gap-7
-                p-6
-                sm:grid-cols-2
+                gap-5
+                p-5
+                sm:gap-7
                 sm:p-7
                 lg:grid-cols-4
               "
@@ -661,14 +698,16 @@ function ProjectBanner({ project }) {
               />
             </div>
 
-            {/* Full overview */}
+            {/* =================================================
+                FULL OVERVIEW
+            ================================================== */}
 
             {project.overview && (
               <div
                 className="
                   border-t
                   border-blue-500/10
-                  px-6
+                  px-5
                   py-4
                   sm:px-7
                 "
@@ -676,9 +715,10 @@ function ProjectBanner({ project }) {
                 <p
                   className="
                     text-sm
-                    leading-relaxed
+                    leading-6
                     text-text-secondary
                     sm:text-base
+                    sm:leading-7
                   "
                 >
                   {project.overview}
@@ -697,7 +737,7 @@ function ProjectBanner({ project }) {
                   items-center
                   border-t
                   border-blue-500/10
-                  px-6
+                  px-5
                   py-4
                   sm:px-7
                 "
@@ -713,12 +753,12 @@ function ProjectBanner({ project }) {
                     group/github
                     inline-flex
                     items-center
-                    gap-2.5
+                    gap-2
                     rounded-xl
                     border
                     border-blue-400/25
                     bg-blue-500/[0.05]
-                    px-5
+                    px-4
                     py-2.5
                     font-display
                     text-sm
@@ -732,6 +772,7 @@ function ProjectBanner({ project }) {
                     hover:bg-blue-500/[0.10]
                     hover:text-white
                     hover:shadow-[0_12px_32px_-14px_rgba(59,130,246,0.8)]
+                    sm:px-5
                   "
                 >
                   <GithubIcon
@@ -774,14 +815,18 @@ function ProjectBanner({ project }) {
           flex-wrap
           items-center
           justify-between
-          gap-4
+          gap-3
           bg-[#080B14]
-          px-6
-          py-5
+          px-5
+          py-4
+          sm:gap-4
           sm:px-8
+          sm:py-5
         "
       >
-        <div>
+        {/* Project information */}
+
+        <div className="min-w-0">
           <p className="text-xs text-text-muted">
             {project.category}
           </p>
@@ -799,7 +844,18 @@ function ProjectBanner({ project }) {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-3">
+        {/* =================================================
+            ACTION BUTTONS
+        ================================================== */}
+
+        <div
+          className="
+            flex
+            flex-wrap
+            gap-2
+            sm:gap-3
+          "
+        >
           {/* GitHub */}
 
           {isRealUrl(project.github) && (
@@ -817,9 +873,9 @@ function ProjectBanner({ project }) {
                 rounded-lg
                 border
                 border-border-strong
-                px-4
+                px-3
                 py-2.5
-                text-sm
+                text-xs
                 font-semibold
                 text-text-primary
                 transition-all
@@ -827,6 +883,8 @@ function ProjectBanner({ project }) {
                 hover:-translate-y-0.5
                 hover:border-blue-500
                 hover:bg-blue-500/10
+                sm:px-4
+                sm:text-sm
               "
             >
               <GithubIcon size={16} />
@@ -851,15 +909,17 @@ function ProjectBanner({ project }) {
                 gap-2
                 rounded-lg
                 bg-blue-600
-                px-4
+                px-3
                 py-2.5
-                text-sm
+                text-xs
                 font-semibold
                 text-white
                 transition-all
                 duration-200
                 hover:-translate-y-0.5
                 hover:bg-blue-500
+                sm:px-4
+                sm:text-sm
               "
             >
               <Play size={15} />
@@ -868,8 +928,12 @@ function ProjectBanner({ project }) {
             </a>
           )}
 
-          {(isRealUrl(project.github) ||
-            isRealUrl(project.demo)) && (
+          {/* New tab */}
+
+          {(
+            isRealUrl(project.github) ||
+            isRealUrl(project.demo)
+          ) && (
             <span
               className="
                 hidden
@@ -891,6 +955,11 @@ function ProjectBanner({ project }) {
     </motion.article>
   );
 }
+
+/* =========================================================
+   PROJECTS SECTION
+========================================================= */
+
 export default function Projects() {
   return (
     <section
@@ -901,7 +970,8 @@ export default function Projects() {
         scroll-mt-24
         overflow-hidden
         bg-transparent
-        py-24
+        py-16
+        sm:py-20
         md:py-32
       "
     >
@@ -943,7 +1013,8 @@ export default function Projects() {
           mx-auto
           w-full
           max-w-6xl
-          px-6
+          px-4
+          sm:px-6
           md:px-10
         "
       >
@@ -955,12 +1026,15 @@ export default function Projects() {
         <motion.p
           variants={cardVariants}
           className="
-            mt-6
+            mt-4
             max-w-3xl
-            text-base
-            leading-relaxed
+            text-sm
+            leading-6
             text-text-secondary
-            sm:text-lg
+            sm:mt-6
+            sm:text-base
+            sm:leading-7
+            lg:text-lg
           "
         >
           Selected applications and development
@@ -974,7 +1048,15 @@ export default function Projects() {
             PROJECT LIST
         ================================================== */}
 
-        <div className="mt-12 space-y-8">
+        <div
+          className="
+            mt-8
+            space-y-6
+            sm:mt-10
+            sm:space-y-8
+            lg:mt-12
+          "
+        >
           {projects.map((project) => (
             <ProjectBanner
               key={project.title}

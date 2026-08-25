@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
-import { navLinks, profile } from "../data/portfolio";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  Menu,
+  X,
+  ArrowUpRight,
+} from "lucide-react";
+import {
+  navLinks,
+  profile,
+} from "../data/portfolio";
+import {
+  motion,
+  AnimatePresence,
+} from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,16 +21,22 @@ export default function Navbar() {
   const fullName = profile.name;
 
   const [typedName, setTypedName] = useState("");
-  const [isTypingDone, setIsTypingDone] = useState(false);
+  const [isTypingDone, setIsTypingDone] =
+    useState(false);
 
-  // Navbar name typing
+  /* =========================================================
+     NAME TYPING
+  ========================================================== */
+
   useEffect(() => {
     let index = 0;
 
     const timer = setInterval(() => {
       index += 1;
 
-      setTypedName(fullName.slice(0, index));
+      setTypedName(
+        fullName.slice(0, index)
+      );
 
       if (index >= fullName.length) {
         clearInterval(timer);
@@ -31,22 +47,30 @@ export default function Navbar() {
       }
     }, 85);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+    };
   }, [fullName]);
 
-  // Scroll + active section
+  /* =========================================================
+     SCROLL + ACTIVE SECTION
+  ========================================================== */
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
       const sections = navLinks
-        .map((link) => document.querySelector(link.href))
+        .map((link) =>
+          document.querySelector(link.href)
+        )
         .filter(Boolean);
 
       let current = "home";
 
       sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
+        const rect =
+          section.getBoundingClientRect();
 
         if (rect.top <= 140) {
           current = section.id;
@@ -58,21 +82,75 @@ export default function Navbar() {
 
     handleScroll();
 
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      {
+        passive: true,
+      }
+    );
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
     };
   }, []);
+
+  /* =========================================================
+     LOCK BODY SCROLL WHEN MOBILE MENU IS OPEN
+  ========================================================== */
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  /* =========================================================
+     CLOSE MENU ON DESKTOP
+  ========================================================== */
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener(
+      "resize",
+      handleResize
+    );
+
+    return () => {
+      window.removeEventListener(
+        "resize",
+        handleResize
+      );
+    };
+  }, []);
+
+  /* =========================================================
+     NAVIGATION
+  ========================================================== */
 
   const handleNavClick = (href) => {
     setIsOpen(false);
 
-    const target = document.querySelector(href);
+    const target =
+      document.querySelector(href);
 
-    if (!target) return;
+    if (!target) {
+      return;
+    }
 
     const navHeight = 76;
 
@@ -93,41 +171,51 @@ export default function Navbar() {
         fixed
         left-0
         top-0
-        z-50
+        z-[100]
         w-full
         transition-all
         duration-300
         ${
           scrolled
-            ? "border-b border-white/[0.05] bg-[#05070D]/88 backdrop-blur-xl"
+            ? "border-b border-white/[0.06] bg-[#05070D]/90 backdrop-blur-xl"
             : "bg-transparent"
         }
       `}
     >
+      {/* =====================================================
+          NAVBAR CONTAINER
+      ====================================================== */}
+
       <div
         className="
+          mx-auto
           flex
-          h-[76px]
+          h-[68px]
           w-full
+          max-w-7xl
           items-center
-          px-5
+          px-4
+          sm:h-[72px]
           sm:px-6
+          md:h-[76px]
           md:px-8
-          lg:px-9
-          xl:px-10
+          lg:px-10
         "
       >
-        {/* ================================
+        {/* =================================================
             LOGO
-        ================================= */}
+        ================================================== */}
 
         <button
           type="button"
-          onClick={() => handleNavClick("#home")}
+          onClick={() =>
+            handleNavClick("#home")
+          }
           aria-label="Go to home"
           className="
             group
             flex
+            min-w-0
             shrink-0
             items-center
             focus:outline-none
@@ -135,12 +223,14 @@ export default function Navbar() {
         >
           <span
             className="
+              max-w-[220px]
+              truncate
               font-display
-              text-[1.05rem]
+              text-base
               font-bold
               tracking-[-0.03em]
               text-white
-              sm:text-[1.12rem]
+              sm:text-[1.08rem]
               md:text-[1.2rem]
             "
           >
@@ -159,8 +249,9 @@ export default function Navbar() {
               }}
               className="
                 ml-1
-                h-[0.95em]
+                h-[0.9em]
                 w-[2px]
+                shrink-0
                 rounded-full
                 bg-blue-400
                 shadow-[0_0_10px_rgba(59,130,246,0.9)]
@@ -180,6 +271,7 @@ export default function Navbar() {
                 ml-1
                 h-1
                 w-1
+                shrink-0
                 rounded-full
                 bg-blue-400
                 shadow-[0_0_10px_rgba(59,130,246,0.9)]
@@ -190,29 +282,45 @@ export default function Navbar() {
           )}
         </button>
 
-        {/* ================================
-            RIGHT SIDE
-        ================================= */}
+        {/* =================================================
+            DESKTOP NAV + CTA + MOBILE BUTTON
+        ================================================== */}
 
         <div className="ml-auto flex items-center">
-          {/* Desktop nav */}
+          {/* =================================================
+              DESKTOP NAV
+          ================================================== */}
+
           <nav className="hidden md:block">
-            <ul className="flex items-center gap-7 lg:gap-8 xl:gap-9">
+            <ul
+              className="
+                flex
+                items-center
+                gap-6
+                lg:gap-8
+                xl:gap-9
+              "
+            >
               {navLinks.map((link) => {
                 const isActive =
-                  activeSection === link.href.replace("#", "");
+                  activeSection ===
+                  link.href.replace("#", "");
 
                 return (
                   <li key={link.href}>
                     <button
                       type="button"
-                      onClick={() => handleNavClick(link.href)}
+                      onClick={() =>
+                        handleNavClick(
+                          link.href
+                        )
+                      }
                       className="
                         group
                         relative
                         py-2.5
                         font-display
-                        text-[0.95rem]
+                        text-sm
                         font-medium
                         text-gray-400
                         transition-colors
@@ -246,7 +354,6 @@ export default function Navbar() {
                           shadow-[0_0_11px_rgba(59,130,246,0.7)]
                           transition-all
                           duration-300
-                          ease-out
                           ${
                             isActive
                               ? "w-full opacity-100"
@@ -261,13 +368,15 @@ export default function Navbar() {
             </ul>
           </nav>
 
-          {/* ================================
-              HIRE ME CTA
-          ================================= */}
+          {/* =================================================
+              DESKTOP HIRE ME
+          ================================================== */}
 
           <motion.button
             type="button"
-            onClick={() => handleNavClick("#contact")}
+            onClick={() =>
+              handleNavClick("#contact")
+            }
             whileHover={{
               y: -2,
             }}
@@ -275,7 +384,7 @@ export default function Navbar() {
               scale: 0.97,
             }}
             className="
-              ml-7
+              ml-6
               hidden
               items-center
               gap-2
@@ -296,205 +405,349 @@ export default function Navbar() {
               hover:bg-blue-500/15
               hover:text-white
               hover:shadow-[0_12px_30px_-12px_rgba(59,130,246,0.85)]
-              lg:ml-8
               lg:inline-flex
+              xl:ml-8
             "
           >
             Hire Me
 
             <ArrowUpRight
               size={16}
-              className="transition-transform duration-300 group-hover:translate-x-0.5"
+              className="
+                transition-transform
+                duration-300
+                group-hover:translate-x-0.5
+              "
             />
           </motion.button>
 
-          {/* Mobile button */}
+          {/* =================================================
+              MOBILE MENU BUTTON
+          ================================================== */}
+
           <button
             type="button"
-            onClick={() => setIsOpen((value) => !value)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
+            onClick={() =>
+              setIsOpen(
+                (value) => !value
+              )
+            }
+            aria-label={
+              isOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
+            }
             aria-expanded={isOpen}
             className="
               ml-3
               flex
               h-10
               w-10
+              shrink-0
               items-center
               justify-center
-              rounded-lg
+              rounded-xl
               border
-              border-white/[0.08]
-              bg-white/[0.02]
+              border-white/[0.10]
+              bg-white/[0.035]
               text-gray-300
               transition-all
               duration-200
-              hover:border-blue-500/40
-              hover:bg-blue-500/5
+              hover:border-blue-500/50
+              hover:bg-blue-500/[0.08]
               hover:text-blue-300
+              active:scale-95
               md:hidden
             "
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            <AnimatePresence
+              mode="wait"
+              initial={false}
+            >
+              {isOpen ? (
+                <motion.span
+                  key="close"
+                  initial={{
+                    opacity: 0,
+                    rotate: -90,
+                    scale: 0.7,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    rotate: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    rotate: 90,
+                    scale: 0.7,
+                  }}
+                >
+                  <X size={20} />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="menu"
+                  initial={{
+                    opacity: 0,
+                    rotate: 90,
+                    scale: 0.7,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    rotate: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    rotate: -90,
+                    scale: 0.7,
+                  }}
+                >
+                  <Menu size={20} />
+                </motion.span>
+              )}
+            </AnimatePresence>
           </button>
         </div>
       </div>
 
-      {/* ================================
+      {/* =====================================================
           MOBILE MENU
-      ================================= */}
+      ====================================================== */}
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{
-              opacity: 0,
-              height: 0,
-            }}
-            animate={{
-              opacity: 1,
-              height: "auto",
-            }}
-            exit={{
-              opacity: 0,
-              height: 0,
-            }}
-            transition={{
-              duration: 0.28,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="
-              overflow-hidden
-              border-t
-              border-white/[0.05]
-              bg-[#05070D]/96
-              backdrop-blur-xl
-              md:hidden
-            "
-          >
-            <nav className="px-5 py-5">
-              <ul className="flex flex-col gap-1.5">
-                {navLinks.map((link, index) => {
-                  const isActive =
-                    activeSection === link.href.replace("#", "");
+          <>
+            {/* Background overlay */}
 
-                  return (
-                    <motion.li
-                      key={link.href}
-                      initial={{
-                        opacity: 0,
-                        x: -12,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        x: 0,
-                      }}
-                      transition={{
-                        delay: index * 0.04,
-                      }}
-                    >
-                      <button
-                        type="button"
-                        onClick={() =>
-                          handleNavClick(link.href)
-                        }
-                        className="
-                          group
-                          relative
-                          w-full
-                          rounded-lg
-                          px-3
-                          py-3.5
-                          text-left
-                          font-display
-                          text-base
-                          font-medium
-                          text-gray-400
-                          transition-all
-                          duration-200
-                          hover:bg-white/[0.03]
-                          hover:text-white
-                        "
-                      >
-                        <span
-                          className={
-                            isActive
-                              ? "text-blue-400"
-                              : "text-gray-400"
-                          }
+            <motion.div
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              exit={{
+                opacity: 0,
+              }}
+              className="
+                fixed
+                inset-0
+                -z-10
+                bg-black/45
+                backdrop-blur-[2px]
+                md:hidden
+              "
+              onClick={() =>
+                setIsOpen(false)
+              }
+            />
+
+            {/* Menu panel */}
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: -10,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: -10,
+              }}
+              transition={{
+                duration: 0.25,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="
+                border-t
+                border-white/[0.06]
+                bg-[#05070D]/97
+                shadow-[0_24px_60px_-30px_rgba(0,0,0,0.9)]
+                backdrop-blur-2xl
+                md:hidden
+              "
+            >
+              <nav
+                className="
+                  mx-auto
+                  w-full
+                  max-w-7xl
+                  px-4
+                  py-4
+                  sm:px-6
+                "
+              >
+                <ul className="flex flex-col gap-1">
+                  {navLinks.map(
+                    (link, index) => {
+                      const isActive =
+                        activeSection ===
+                        link.href.replace(
+                          "#",
+                          ""
+                        );
+
+                      return (
+                        <motion.li
+                          key={link.href}
+                          initial={{
+                            opacity: 0,
+                            x: -12,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            x: 0,
+                          }}
+                          transition={{
+                            delay:
+                              index * 0.04,
+                            duration: 0.25,
+                          }}
                         >
-                          {link.label}
-                        </span>
-
-                        <span
-                          className={`
-                            absolute
-                            bottom-1.5
-                            left-3
-                            h-[2px]
-                            rounded-full
-                            bg-gradient-to-r
-                            from-blue-500
-                            to-cyan-400
-                            transition-all
-                            duration-300
-                            ${
-                              isActive
-                                ? "w-10 opacity-100"
-                                : "w-0 opacity-0 group-hover:w-10 group-hover:opacity-100"
+                          <button
+                            type="button"
+                            onClick={() =>
+                              handleNavClick(
+                                link.href
+                              )
                             }
-                          `}
-                        />
-                      </button>
-                    </motion.li>
-                  );
-                })}
+                            className="
+                              group
+                              relative
+                              flex
+                              w-full
+                              items-center
+                              justify-between
+                              rounded-xl
+                              px-4
+                              py-3.5
+                              text-left
+                              font-display
+                              text-[15px]
+                              font-medium
+                              text-gray-400
+                              transition-all
+                              duration-200
+                              hover:bg-white/[0.04]
+                              hover:text-white
+                              active:scale-[0.99]
+                              sm:text-base
+                            "
+                          >
+                            <span
+                              className={
+                                isActive
+                                  ? "text-blue-400"
+                                  : "text-gray-400 group-hover:text-white"
+                              }
+                            >
+                              {link.label}
+                            </span>
 
-                {/* Mobile Hire Me */}
-                <motion.li
-                  initial={{
-                    opacity: 0,
-                    x: -12,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    x: 0,
-                  }}
-                  transition={{
-                    delay: navLinks.length * 0.04,
-                  }}
-                >
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleNavClick("#contact")
+                            <ArrowUpRight
+                              size={15}
+                              className="
+                                text-gray-600
+                                transition-all
+                                duration-200
+                                group-hover:translate-x-0.5
+                                group-hover:-translate-y-0.5
+                                group-hover:text-blue-400
+                              "
+                            />
+
+                            {/* Active line */}
+
+                            <span
+                              className={`
+                                absolute
+                                bottom-1
+                                left-4
+                                h-[2px]
+                                rounded-full
+                                bg-gradient-to-r
+                                from-blue-500
+                                to-cyan-400
+                                transition-all
+                                duration-300
+                                ${
+                                  isActive
+                                    ? "w-10 opacity-100"
+                                    : "w-0 opacity-0"
+                                }
+                              `}
+                            />
+                          </button>
+                        </motion.li>
+                      );
                     }
-                    className="
-                      mt-2
-                      flex
-                      w-full
-                      items-center
-                      justify-center
-                      gap-2
-                      rounded-lg
-                      bg-blue-600
-                      px-4
-                      py-3.5
-                      font-display
-                      text-sm
-                      font-semibold
-                      text-white
-                      transition-all
-                      duration-200
-                      hover:bg-blue-500
-                    "
+                  )}
+
+                  {/* =================================================
+                      MOBILE HIRE ME
+                  ================================================== */}
+
+                  <motion.li
+                    initial={{
+                      opacity: 0,
+                      y: 8,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    transition={{
+                      delay:
+                        navLinks.length *
+                        0.04,
+                      duration: 0.25,
+                    }}
+                    className="pt-2"
                   >
-                    Hire Me
-                    <ArrowUpRight size={16} />
-                  </button>
-                </motion.li>
-              </ul>
-            </nav>
-          </motion.div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        handleNavClick(
+                          "#contact"
+                        )
+                      }
+                      className="
+                        flex
+                        w-full
+                        items-center
+                        justify-center
+                        gap-2
+                        rounded-xl
+                        bg-blue-600
+                        px-4
+                        py-3.5
+                        font-display
+                        text-sm
+                        font-semibold
+                        text-white
+                        shadow-[0_10px_30px_-12px_rgba(37,99,235,0.7)]
+                        transition-all
+                        duration-200
+                        hover:bg-blue-500
+                        active:scale-[0.99]
+                      "
+                    >
+                      Hire Me
+
+                      <ArrowUpRight
+                        size={16}
+                      />
+                    </button>
+                  </motion.li>
+                </ul>
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
