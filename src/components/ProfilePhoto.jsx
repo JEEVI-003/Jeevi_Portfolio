@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function ProfilePhoto({ src, name }) {
+export default function ProfilePhoto({ name }) {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -13,7 +13,9 @@ export default function ProfilePhoto({ src, name }) {
     if (!isDeleting) {
       if (displayText.length < text.length) {
         timer = setTimeout(() => {
-          setDisplayText(text.slice(0, displayText.length + 1));
+          setDisplayText(
+            text.slice(0, displayText.length + 1)
+          );
         }, 90);
       } else {
         timer = setTimeout(() => {
@@ -23,14 +25,18 @@ export default function ProfilePhoto({ src, name }) {
     } else {
       if (displayText.length > 0) {
         timer = setTimeout(() => {
-          setDisplayText(text.slice(0, displayText.length - 1));
+          setDisplayText(
+            text.slice(0, displayText.length - 1)
+          );
         }, 50);
       } else {
         setIsDeleting(false);
       }
     }
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [displayText, isDeleting]);
 
   return (
@@ -43,9 +49,9 @@ export default function ProfilePhoto({ src, name }) {
         md:mx-0
       "
     >
-      {/* =================================================
+      {/* =========================================
           SOFT OUTER GLOW
-      ================================================== */}
+      ========================================== */}
 
       <div
         className="
@@ -58,9 +64,9 @@ export default function ProfilePhoto({ src, name }) {
         "
       />
 
-      {/* =================================================
+      {/* =========================================
           MOVING OUTLINE
-      ================================================== */}
+      ========================================== */}
 
       <div
         className="
@@ -88,9 +94,9 @@ export default function ProfilePhoto({ src, name }) {
           }}
         />
 
-        {/* =================================================
+        {/* =========================================
             PHOTO CONTAINER
-        ================================================== */}
+        ========================================== */}
 
         <div
           className="
@@ -100,11 +106,13 @@ export default function ProfilePhoto({ src, name }) {
             bg-[#05070d]
           "
         >
-          {/* Photo */}
+          {/* =========================================
+              ACTUAL PROFILE PHOTO
+          ========================================== */}
 
           <img
-            src={src}
-            alt={name}
+            src="/assets/j_port_ph.png"
+            alt={name || "Jeevikesh S N"}
             className="
               block
               h-auto
@@ -116,7 +124,9 @@ export default function ProfilePhoto({ src, name }) {
             draggable="false"
           />
 
-          {/* Bottom fade */}
+          {/* =========================================
+              BOTTOM FADE
+          ========================================== */}
 
           <div
             className="
@@ -132,9 +142,9 @@ export default function ProfilePhoto({ src, name }) {
             "
           />
 
-          {/* =================================================
-              OPEN TO WORK — TRANSPARENT
-          ================================================== */}
+          {/* =========================================
+              OPEN TO WORK
+          ========================================== */}
 
           <div
             className="
@@ -148,12 +158,13 @@ export default function ProfilePhoto({ src, name }) {
               bg-transparent
             "
           >
-            {/* Small status light */}
+            {/* Green status dot */}
 
             <span
               className="
                 h-2
                 w-2
+                shrink-0
                 rounded-full
                 bg-emerald-400
                 shadow-[0_0_9px_rgba(52,211,153,0.85)]
@@ -175,6 +186,7 @@ export default function ProfilePhoto({ src, name }) {
               "
             >
               {displayText}
+
               <span
                 className="
                   ml-0.5
@@ -189,7 +201,9 @@ export default function ProfilePhoto({ src, name }) {
             </span>
           </div>
 
-          {/* Bottom ambient blue light */}
+          {/* =========================================
+              BOTTOM AMBIENT BLUE LIGHT
+          ========================================== */}
 
           <motion.div
             className="

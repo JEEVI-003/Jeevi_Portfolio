@@ -421,25 +421,25 @@ bg-transparent
 
             {/* Resume */}
 
-            <a
-              href="/resume.pdf"
-              download="JEEVIKESH_S_N_Resume.pdf"
-              aria-label="Download Resume"
-              className="
-                group
-                inline-flex
-                items-center
-                gap-2
-                font-display
-                text-sm
-                font-medium
-                text-text-secondary
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:text-blue-300
-              "
-            >
+           <a
+  href="/assets/JEEVIKESH_S_N_Resume.pdf"
+  download="JEEVIKESH_S_N_Resume.pdf"
+  aria-label="Download Resume"
+  className="
+    group
+    inline-flex
+    items-center
+    gap-2
+    font-display
+    text-sm
+    font-medium
+    text-text-secondary
+    transition-all
+    duration-300
+    hover:-translate-y-0.5
+    hover:text-blue-300
+  "
+>
               <span
                 className="
                   flex
