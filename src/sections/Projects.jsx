@@ -188,6 +188,10 @@ function InfoGroup({ title, items }) {
 function ProjectBanner({ project }) {
   const [open, setOpen] = useState(false);
 
+  const isDesktop = () =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(min-width: 1024px)").matches;
+
   const stack = cleanItems(project.stack);
 
   const overviewItems =
@@ -219,6 +223,16 @@ function ProjectBanner({ project }) {
         shadow-[0_30px_90px_-45px_rgba(37,99,235,0.7)]
         sm:rounded-3xl
       "
+      onMouseEnter={() => {
+        if (isDesktop()) {
+          setOpen(true);
+        }
+      }}
+      onMouseLeave={() => {
+        if (isDesktop()) {
+          setOpen(false);
+        }
+      }}
     >
       {/* =================================================
           FUTURISTIC BANNER
@@ -233,11 +247,10 @@ function ProjectBanner({ project }) {
           sm:min-h-[290px]
           lg:min-h-[320px]
         "
-        onClick={() =>
-          setOpen((value) => !value)
-        }
       >
-        {/* Background */}
+        {/* =================================================
+            BACKGROUND
+        ================================================== */}
 
         <div
           className="
@@ -247,7 +260,9 @@ function ProjectBanner({ project }) {
           "
         />
 
-        {/* Cyan light */}
+        {/* =================================================
+            CYAN LIGHT
+        ================================================== */}
 
         <motion.div
           animate={{
@@ -276,7 +291,9 @@ function ProjectBanner({ project }) {
           "
         />
 
-        {/* Violet light */}
+        {/* =================================================
+            VIOLET LIGHT
+        ================================================== */}
 
         <motion.div
           animate={{
@@ -305,7 +322,9 @@ function ProjectBanner({ project }) {
           "
         />
 
-        {/* Pink light */}
+        {/* =================================================
+            PINK LIGHT
+        ================================================== */}
 
         <motion.div
           animate={{
@@ -333,7 +352,9 @@ function ProjectBanner({ project }) {
           "
         />
 
-        {/* Bright focal beam */}
+        {/* =================================================
+            BRIGHT FOCAL BEAM
+        ================================================== */}
 
         <motion.div
           animate={{
@@ -361,7 +382,9 @@ function ProjectBanner({ project }) {
           "
         />
 
-        {/* Ambient glows */}
+        {/* =================================================
+            AMBIENT GLOWS
+        ================================================== */}
 
         <div
           className="
@@ -403,7 +426,9 @@ function ProjectBanner({ project }) {
           "
         />
 
-        {/* Particles */}
+        {/* =================================================
+            PARTICLES
+        ================================================== */}
 
         <div className="pointer-events-none absolute inset-0">
           {[...Array(16)].map((_, index) => (
@@ -420,7 +445,8 @@ function ProjectBanner({ project }) {
                 ],
               }}
               transition={{
-                duration: 4 + index * 0.22,
+                duration:
+                  4 + index * 0.22,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: index * 0.1,
@@ -441,7 +467,9 @@ function ProjectBanner({ project }) {
           ))}
         </div>
 
-        {/* Vignette */}
+        {/* =================================================
+            VIGNETTE
+        ================================================== */}
 
         <div
           className="
@@ -451,7 +479,8 @@ function ProjectBanner({ project }) {
             bg-[radial-gradient(circle_at_center,transparent_26%,rgba(2,4,10,0.76)_100%)]
           "
         />
-                {/* =================================================
+
+        {/* =================================================
             PROJECT CONTENT
         ================================================== */}
 
@@ -506,7 +535,10 @@ function ProjectBanner({ project }) {
             type="button"
             onClick={(event) => {
               event.stopPropagation();
-              setOpen((value) => !value);
+
+              if (!isDesktop()) {
+                setOpen((value) => !value);
+              }
             }}
             className="
               group/title
@@ -627,9 +659,9 @@ function ProjectBanner({ project }) {
         </div>
       </div>
 
-      {/* =========================================================
+      {/* =================================================
           DATA-DRIVEN DROPDOWN
-      ========================================================== */}
+      ================================================== */}
 
       <AnimatePresence>
         {open && (
@@ -659,6 +691,10 @@ function ProjectBanner({ project }) {
               backdrop-blur-xl
             "
           >
+            {/* =================================================
+                DROPDOWN CONTENT
+            ================================================== */}
+
             <div
               className="
                 grid
@@ -805,9 +841,10 @@ function ProjectBanner({ project }) {
           </motion.div>
         )}
       </AnimatePresence>
-            {/* =========================================================
+
+      {/* =================================================
           BOTTOM BAR
-      ========================================================== */}
+      ================================================== */}
 
       <div
         className="

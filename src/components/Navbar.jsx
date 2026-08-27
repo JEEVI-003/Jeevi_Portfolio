@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+
 import {
   Menu,
   X,
   ArrowUpRight,
 } from "lucide-react";
+
 import {
   navLinks,
   profile,
 } from "../data/portfolio";
+
 import {
   motion,
   AnimatePresence,
@@ -15,12 +18,41 @@ import {
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-  const [scrolled, setScrolled] = useState(false);
+
+  const [activeSection, setActiveSection] =
+    useState("home");
+
+  const [scrolled, setScrolled] =
+    useState(false);
+
+  /* =========================================================
+     HIRE ME SELECTED STATE
+  ========================================================== */
+
+  const [hireMeClicked, setHireMeClicked] =
+    useState(false);
 
   const fullName = profile.name;
 
-  const [typedName, setTypedName] = useState("");
+  /* =========================================================
+     HIDE HOME FROM VISIBLE NAVIGATION
+     
+     #home is still kept internally for
+     active-section detection.
+  ========================================================== */
+
+  const visibleNavLinks =
+    navLinks.filter(
+      (link) => link.href !== "#home"
+    );
+
+  /* =========================================================
+     LOGO TYPING
+  ========================================================== */
+
+  const [typedName, setTypedName] =
+    useState("");
+
   const [isTypingDone, setIsTypingDone] =
     useState(false);
 
@@ -58,11 +90,15 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(
+        window.scrollY > 20
+      );
 
       const sections = navLinks
         .map((link) =>
-          document.querySelector(link.href)
+          document.querySelector(
+            link.href
+          )
         )
         .filter(Boolean);
 
@@ -104,7 +140,8 @@ export default function Navbar() {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow =
+        "hidden";
     } else {
       document.body.style.overflow = "";
     }
@@ -115,7 +152,7 @@ export default function Navbar() {
   }, [isOpen]);
 
   /* =========================================================
-     CLOSE MENU ON DESKTOP
+     CLOSE MOBILE MENU ON DESKTOP
   ========================================================== */
 
   useEffect(() => {
@@ -145,6 +182,17 @@ export default function Navbar() {
   const handleNavClick = (href) => {
     setIsOpen(false);
 
+    /*
+      Any normal navigation item resets
+      the Hire Me selected state.
+
+      #contact keeps Hire Me highlighted.
+    */
+
+    if (href !== "#contact") {
+      setHireMeClicked(false);
+    }
+
     const target =
       document.querySelector(href);
 
@@ -164,8 +212,7 @@ export default function Navbar() {
       behavior: "smooth",
     });
   };
-
-  return (
+    return (
     <header
       className={`
         fixed
@@ -192,18 +239,19 @@ export default function Navbar() {
           flex
           h-[68px]
           w-full
-          max-w-7xl
+          max-w-[1440px]
           items-center
-          px-4
+          px-5
           sm:h-[72px]
           sm:px-6
           md:h-[76px]
           md:px-8
           lg:px-10
+          xl:px-12
         "
       >
         {/* =================================================
-            LOGO
+            LEFT — LOGO
         ================================================== */}
 
         <button
@@ -283,12 +331,18 @@ export default function Navbar() {
         </button>
 
         {/* =================================================
-            DESKTOP NAV + CTA + MOBILE BUTTON
+            RIGHT GROUP
         ================================================== */}
 
-        <div className="ml-auto flex items-center">
+        <div
+          className="
+            ml-auto
+            flex
+            items-center
+          "
+        >
           {/* =================================================
-              DESKTOP NAV
+              DESKTOP NAVIGATION
           ================================================== */}
 
           <nav className="hidden md:block">
@@ -296,127 +350,252 @@ export default function Navbar() {
               className="
                 flex
                 items-center
-                gap-6
-                lg:gap-8
-                xl:gap-9
+                gap-5
+                lg:gap-6
+                xl:gap-7
               "
             >
-              {navLinks.map((link) => {
-                const isActive =
-                  activeSection ===
-                  link.href.replace("#", "");
+              {visibleNavLinks.map(
+                (link) => {
+                  const isActive =
+                    activeSection ===
+                    link.href.replace(
+                      "#",
+                      ""
+                    );
 
-                return (
-                  <li key={link.href}>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        handleNavClick(
-                          link.href
-                        )
-                      }
-                      className="
-                        group
-                        relative
-                        py-2.5
-                        font-display
-                        text-sm
-                        font-medium
-                        text-gray-400
-                        transition-colors
-                        duration-200
-                        hover:text-white
-                        focus:outline-none
-                        lg:text-base
-                      "
+                  return (
+                    <li
+                      key={link.href}
                     >
-                      <span
-                        className={
-                          isActive
-                            ? "text-blue-400"
-                            : "text-gray-400 group-hover:text-white"
+                      <button
+                        type="button"
+                        onClick={() =>
+                          handleNavClick(
+                            link.href
+                          )
                         }
+                        className="
+                          group
+                          relative
+                          py-2.5
+                          font-display
+                          text-sm
+                          font-medium
+                          text-gray-400
+                          transition-colors
+                          duration-200
+                          hover:text-white
+                          focus:outline-none
+                          lg:text-base
+                        "
                       >
-                        {link.label}
-                      </span>
-
-                      <span
-                        className={`
-                          absolute
-                          bottom-0
-                          left-0
-                          h-[2px]
-                          rounded-full
-                          bg-gradient-to-r
-                          from-blue-500
-                          via-cyan-400
-                          to-blue-500
-                          shadow-[0_0_11px_rgba(59,130,246,0.7)]
-                          transition-all
-                          duration-300
-                          ${
+                        <span
+                          className={
                             isActive
-                              ? "w-full opacity-100"
-                              : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
+                              ? "text-blue-400"
+                              : "text-gray-400 group-hover:text-white"
                           }
-                        `}
-                      />
-                    </button>
-                  </li>
-                );
-              })}
+                        >
+                          {link.label}
+                        </span>
+
+                        {/* Active / hover line */}
+
+                        <span
+                          className={`
+                            absolute
+                            bottom-0
+                            left-0
+                            h-[2px]
+                            rounded-full
+                            bg-gradient-to-r
+                            from-blue-500
+                            via-cyan-400
+                            to-blue-500
+                            shadow-[0_0_11px_rgba(59,130,246,0.7)]
+                            transition-all
+                            duration-300
+                            ${
+                              isActive
+                                ? "w-full opacity-100"
+                                : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
+                            }
+                          `}
+                        />
+                      </button>
+                    </li>
+                  );
+                }
+              )}
             </ul>
           </nav>
-
-          {/* =================================================
+                    {/* =================================================
               DESKTOP HIRE ME
           ================================================== */}
 
           <motion.button
             type="button"
-            onClick={() =>
-              handleNavClick("#contact")
-            }
+            onClick={() => {
+              setHireMeClicked(true);
+
+              handleNavClick(
+                "#contact"
+              );
+            }}
             whileHover={{
               y: -2,
             }}
             whileTap={{
               scale: 0.97,
             }}
-            className="
-              ml-6
+            className={`
+              group
+              relative
+              ml-4
               hidden
+              h-12
+              shrink-0
               items-center
+              justify-center
               gap-2
-              rounded-lg
+              overflow-hidden
+              rounded-xl
               border
-              border-blue-400/30
-              bg-blue-500/10
-              px-4
-              py-2.5
+              px-5
               font-display
               text-sm
               font-semibold
-              text-blue-300
               shadow-[0_8px_28px_-14px_rgba(59,130,246,0.8)]
               transition-all
               duration-300
-              hover:border-blue-400/60
-              hover:bg-blue-500/15
-              hover:text-white
-              hover:shadow-[0_12px_30px_-12px_rgba(59,130,246,0.85)]
+              active:scale-[0.97]
               lg:inline-flex
-              xl:ml-8
-            "
+
+              ${
+                hireMeClicked
+                  ? "border-cyan-300/70 text-white shadow-[0_0_30px_-8px_rgba(34,211,238,0.8)]"
+                  : "border-blue-400/40 bg-blue-500/10 text-blue-300 hover:border-cyan-300/60 hover:text-white hover:shadow-[0_12px_32px_-10px_rgba(34,211,238,0.7)]"
+              }
+            `}
           >
-            Hire Me
+            {/* =================================================
+                CLICK COLOR POP
+            ================================================== */}
+
+            <motion.span
+              initial={false}
+              animate={{
+                opacity:
+                  hireMeClicked
+                    ? 1
+                    : 0,
+
+                scale:
+                  hireMeClicked
+                    ? 1
+                    : 0.82,
+              }}
+              transition={{
+                duration: 0.28,
+                ease: "easeOut",
+              }}
+              className="
+                pointer-events-none
+                absolute
+                inset-0
+                rounded-xl
+                bg-gradient-to-br
+                from-blue-600
+                via-cyan-500
+                to-violet-500
+              "
+            />
+
+            {/* =================================================
+                POP GLOW
+            ================================================== */}
+
+            {hireMeClicked && (
+              <motion.span
+                initial={{
+                  opacity: 0,
+                  scale: 0.7,
+                }}
+                animate={{
+                  opacity: [
+                    0,
+                    0.8,
+                    0,
+                  ],
+                  scale: [
+                    0.7,
+                    1.08,
+                    1.15,
+                  ],
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                }}
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-0
+                  rounded-xl
+                  bg-white/20
+                  blur-md
+                "
+              />
+            )}
+
+            {/* =================================================
+                HOVER SHINE
+            ================================================== */}
+
+            <span
+              className="
+                pointer-events-none
+                absolute
+                -left-8
+                top-0
+                h-full
+                w-8
+                -skew-x-12
+                bg-white/20
+                blur-sm
+                transition-transform
+                duration-700
+                group-hover:translate-x-[150px]
+              "
+            />
+
+            {/* =================================================
+                TEXT
+            ================================================== */}
+
+            <span
+              className="
+                relative
+                z-10
+              "
+            >
+              Hire Me
+            </span>
+
+            {/* =================================================
+                ARROW
+            ================================================== */}
 
             <ArrowUpRight
               size={16}
               className="
-                transition-transform
+                relative
+                z-10
+                transition-all
                 duration-300
-                group-hover:translate-x-0.5
+                group-hover:translate-x-1
+                group-hover:-translate-y-0.5
               "
             />
           </motion.button>
@@ -511,15 +690,16 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-
-      {/* =====================================================
+            {/* =====================================================
           MOBILE MENU
       ====================================================== */}
 
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Background overlay */}
+            {/* =================================================
+                BACKGROUND OVERLAY
+            ================================================== */}
 
             <motion.div
               initial={{
@@ -544,7 +724,9 @@ export default function Navbar() {
               }
             />
 
-            {/* Menu panel */}
+            {/* =================================================
+                MOBILE MENU PANEL
+            ================================================== */}
 
             <motion.div
               initial={{
@@ -561,7 +743,12 @@ export default function Navbar() {
               }}
               transition={{
                 duration: 0.25,
-                ease: [0.16, 1, 0.3, 1],
+                ease: [
+                  0.16,
+                  1,
+                  0.3,
+                  1,
+                ],
               }}
               className="
                 border-t
@@ -582,8 +769,18 @@ export default function Navbar() {
                   sm:px-6
                 "
               >
-                <ul className="flex flex-col gap-1">
-                  {navLinks.map(
+                <ul
+                  className="
+                    flex
+                    flex-col
+                    gap-1
+                  "
+                >
+                  {/* =================================================
+                      MOBILE NAV LINKS
+                  ================================================== */}
+
+                  {visibleNavLinks.map(
                     (link, index) => {
                       const isActive =
                         activeSection ===
@@ -703,7 +900,7 @@ export default function Navbar() {
                     }}
                     transition={{
                       delay:
-                        navLinks.length *
+                        visibleNavLinks.length *
                         0.04,
                       duration: 0.25,
                     }}
